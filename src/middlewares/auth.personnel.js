@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const userModel = require("./../model/user");
+const personnelModel = require("../model/personnel");
 
-const auth = async (req, res, next) => {
+const authPersonnel = async (req, res, next) => {
   try {
   const authHeader = req.header("Authorization")?.split(" ");
 
@@ -16,11 +16,11 @@ const auth = async (req, res, next) => {
   
     const jwtToken = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await userModel.findOne(jwtToken.id).lean();
+    const personnel = await personnelModel.findOne({_id : jwtToken._id}).lean();        
 
-    Reflect.deleteProperty(user, "password");
+    Reflect.deleteProperty(personnel, "password");
 
-    req.user = user;
+    req.personnel = personnel;
 
     next();
   } catch (error) {
@@ -34,5 +34,5 @@ const auth = async (req, res, next) => {
 
 
 module.exports ={
-  auth
+  authPersonnel
 }

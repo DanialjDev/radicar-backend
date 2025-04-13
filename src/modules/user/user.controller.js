@@ -89,3 +89,34 @@ exports.resetPassword = async (req, res) => {
     console.log(error);
   }
 };
+exports.updateUser = async (req, res) => {
+  try {
+    const { name,phoneNumber, password } = req.body;
+    const {id} = req.params
+    
+      const updateData = {};
+      updateData.name = name
+      updateData.phoneNumber = phoneNumber
+
+      if (password) {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        updateData.password = hashedPassword;
+      }
+  
+      const isUser = await userModel.findOneAndUpdate(
+        { _id:id },
+        updateData,
+        { new: true }
+      );
+  
+      if (!isUser) {
+        return res.status(404).json({ message: "user not found" });
+      }
+  
+      return res.status(200).json({message : "اطلاعات با موفقیت ویرایش شد"});
+    
+  } catch (error) {
+    console.log(error);
+  }
+};

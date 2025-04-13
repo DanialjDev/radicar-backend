@@ -7,7 +7,10 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser")
 
 const userRoutes = require("./src/modules/user/user.routes")
+const personnelRoutes = require("./src/modules/personnel/personnel.routes")
 const otpRoutes = require("./src/modules/otp/otp.routes")
+const ticketRoutes = require("./src/modules/ticket/ticket.routes")
+const messageRoutes = require("./src/modules/message/message.routes")
 
 
 require("dotenv").config()
@@ -30,7 +33,10 @@ app.use(cors());
 
 //Routes
 app.use("/user", userRoutes)
+app.use("/personnel", personnelRoutes)
+app.use("/ticket", ticketRoutes)
 app.use("/otp", otpRoutes)
+app.use("/message", messageRoutes)
 
 
 //404 error 
