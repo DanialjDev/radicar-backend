@@ -7,10 +7,14 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser")
 
 const userRoutes = require("./src/modules/user/user.routes")
+const settingUserRoutes = require("./src/modules/settingUser/settingUser.routes")
 const personnelRoutes = require("./src/modules/personnel/personnel.routes")
 const otpRoutes = require("./src/modules/otp/otp.routes")
 const ticketRoutes = require("./src/modules/ticket/ticket.routes")
 const messageRoutes = require("./src/modules/message/message.routes")
+const carFactoryRoutes = require("./src/modules/carFactory/carFactory.routes")
+const carAddressRoutes = require("./src/modules/carAddress/carAddress.routes")
+const carTechniacalRoutes = require("./src/modules/carTeschnical/carTeschnical.routes")
 
 
 require("dotenv").config()
@@ -33,10 +37,14 @@ app.use(cors());
 
 //Routes
 app.use("/user", userRoutes)
+app.use("/usersetting", settingUserRoutes)
 app.use("/personnel", personnelRoutes)
 app.use("/ticket", ticketRoutes)
 app.use("/otp", otpRoutes)
 app.use("/message", messageRoutes)
+app.use("/carFactory", carFactoryRoutes)
+app.use("/carAddress", carAddressRoutes)
+app.use("/carTechniacal", carTechniacalRoutes)
 
 
 //404 error 

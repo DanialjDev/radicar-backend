@@ -1,4 +1,5 @@
 const userModel = require("./../../model/user");
+const settingUserModel = require("./../../model/settingUser");
 const bcrypt = require("bcrypt");
 
 const {
@@ -14,6 +15,10 @@ exports.register = async (req, res) => {
     const createUser = await userModel.create({
         name,password,phoneNumber,email
     });
+    const createSettingUser = await settingUserModel.create({
+      userId : createUser._id
+    });
+
 
     return res.status(201).json({message : "ثبت نام با موفقیت انجام شد"});
   } catch (error) {
