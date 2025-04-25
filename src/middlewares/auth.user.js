@@ -17,7 +17,7 @@ const auth = async (req, res, next) => {
     const jwtToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await userModel.findOne({_id : jwtToken._id}).lean();
-    if (!user) return next();
+    // if (!user) return next();
     
     Reflect.deleteProperty(user, "password");
 

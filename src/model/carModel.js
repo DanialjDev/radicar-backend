@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
     },
     logo: {
         type: String,
-        required: true,
+        required: false,
         default : ""
     },
     carFactoryId: {
@@ -28,7 +28,7 @@ const schema = new mongoose.Schema({
             require: true
         }
     ],
-    carAddress: {
+    carAddressId: {
         type: mongoose.Types.ObjectId,
         ref: "CarAddress",
         require: true
@@ -36,7 +36,7 @@ const schema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const Factory = mongoose.model("CarFactory", schema)
+const Carmodel = mongoose.model("Carmodel", schema)
 
 
-module.exports = Factory
+module.exports = Carmodel

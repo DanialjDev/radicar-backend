@@ -2,19 +2,20 @@ const mongoose = require('mongoose');
 
 
 const schema = new mongoose.Schema({
-    address: {
-        type: String,
-        required: true
-    },
     personnelId: {
         type: mongoose.Types.ObjectId,
         ref: "Personnel",
         require: true
     },
-    bitMask: {
-        type: String,
-        required: true
+    kilometer: {
+        addr: { type: String, required: true },      
+        bitMask: { type: Number, required: true }    
+    },
+    ignitionStatus: {
+        addr: { type: String, required: true },      
+        bitMask: { type: Number, required: true }    
     }
+
 
 }, { timestamps: true })
 
