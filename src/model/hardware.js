@@ -18,10 +18,10 @@ const schema = new mongoose.Schema({
         default : "",
         required : false 
     }
-    
+
 }, { timestamps: true })
 
-const message = mongoose.model("Message", schema)
+const Hardware = mongoose.model("Hardware", schema)
 
 
-module.exports = message
+module.exports = Hardware
