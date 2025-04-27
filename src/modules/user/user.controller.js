@@ -15,12 +15,22 @@ exports.register = async (req, res) => {
     const createUser = await userModel.create({
         name,password,phoneNumber,email
     });
-    const createSettingUser = await settingUserModel.create({
-      userId : createUser._id
-    });
+    // const createSettingUser = await settingUserModel.create({
+    //   userId : createUser._id
+    // });
 
+    const accessToken = generateAccessToken(createUser._id);
+        const updateUser = await userModel.findOneAndUpdate(
+            { phoneNumber },
+            { accessToken },
+            {
+              projection: { accessToken: 1, _id: 0 }, 
+              returnDocument: "after",
+            }
+          );
+        res.cookie("access_token", accessToken, { httpOnly: true });     
 
-    return res.status(201).json({message : "ثبت نام با موفقیت انجام شد"});
+    return res.status(201).json({message : "ثبت نام با موفقیت انجام شد", user : updateUser});
   } catch (error) {
     if (
         error.code === 11000 &&
