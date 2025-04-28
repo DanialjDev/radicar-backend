@@ -913,7 +913,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
 									"type": "string"
 								}
 							]
@@ -922,7 +922,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"address\": \"تست\",\r\n    \"bitMask\": \"fdghjdrtyf\"\r\n}",
+							"raw": "{\r\n  \"kilometer\": {\r\n    \"addr\": \"0x300\",\r\n    \"bitMask\": 0\r\n  },\r\n  \"ignitionStatus\": {\r\n    \"addr\": \"0x601\",\r\n    \"bitMask\": 8\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -952,7 +952,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
 									"type": "string"
 								}
 							]
@@ -982,7 +982,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
 									"type": "string"
 								}
 							]
@@ -990,7 +990,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carAddress/680a10f7df044236a37fd884",
+							"raw": "http://localhost:4000/carAddress/680b4fcf96b32e96ce2efaaa",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -998,7 +998,7 @@
 							"port": "4000",
 							"path": [
 								"carAddress",
-								"680a10f7df044236a37fd884"
+								"680b4fcf96b32e96ce2efaaa"
 							]
 						}
 					},
@@ -1012,7 +1012,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
 									"type": "string"
 								}
 							]
@@ -1021,7 +1021,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"address\": \"111تست\",\r\n    \"bitMask\": \"fdghjdrtyf\"\r\n}",
+							"raw": "{\r\n  \"kilometer\": {\r\n    \"addr\": \"0x3001\",\r\n    \"bitMask\": 0\r\n  },\r\n  \"ignitionStatus\": {\r\n    \"addr\": \"0x6012\",\r\n    \"bitMask\": 8\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1029,7 +1029,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carAddress/680a10f7df044236a37fd884/update",
+							"raw": "http://localhost:4000/carAddress/680b4fcf96b32e96ce2efaaa/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1037,7 +1037,7 @@
 							"port": "4000",
 							"path": [
 								"carAddress",
-								"680a10f7df044236a37fd884",
+								"680b4fcf96b32e96ce2efaaa",
 								"update"
 							]
 						}
@@ -1088,7 +1088,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
 									"type": "string"
 								}
 							]
@@ -1244,6 +1244,180 @@
 							"path": [
 								"carTechniacal",
 								"680a1531324fc39cb0a23d31",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "carModel",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"پژو\",\r\n    \"logo\": \"\",\r\n    \"carFactoryId\": \"6809fd929f1a4127a4f03f13\",\r\n    \"carTechnicalId\": [\"680b416e1d4a380c07573982\"],\r\n    \"carAddressId\": \"680b41941d4a380c07573985\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/carModel/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carModel",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/carModel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carModel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/carModel/680b4442a3fa8b35234b3c63",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carModel",
+								"680b4442a3fa8b35234b3c63"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"پژو\",\r\n    \"logo\": \"\",\r\n    \"carFactoryId\": \"6809fd929f1a4127a4f03f13\",\r\n    \"carTechnicalId\": [\"680b416e1d4a380c07573982\"],\r\n    \"carAddressId\": \"680b41941d4a380c07573985\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/carModel/680b4442a3fa8b35234b3c63/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carModel",
+								"680b4442a3fa8b35234b3c63",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/carModel/680b4442a3fa8b35234b3c63/remove",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carModel",
+								"680b4442a3fa8b35234b3c63",
 								"remove"
 							]
 						}
