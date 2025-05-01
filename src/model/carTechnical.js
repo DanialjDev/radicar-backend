@@ -15,6 +15,10 @@ const schema = new mongoose.Schema({
         ref: "Personnel",
         require: true
     },
+    defaultItem: {
+        type: Boolean,
+        required: true
+    }
 
 }, { timestamps: true })
 

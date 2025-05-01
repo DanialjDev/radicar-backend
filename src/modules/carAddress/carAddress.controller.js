@@ -3,9 +3,9 @@ const { default: mongoose } = require("mongoose");
 
 exports.createCarAddress = async (req, res) => {
     try {
-        const { kilometer, ignitionStatus } = req.body
+        const {name, kilometer, ignitionStatus,network } = req.body
         const personnelId = req.personnel._id
-        const createCarAddress = await CarAddressModel.create({ kilometer, personnelId, ignitionStatus })
+        const createCarAddress = await CarAddressModel.create({ name,kilometer, personnelId, ignitionStatus,network })
         return res.status(201).json(createCarAddress);
     } catch (error) {
         console.error(error);
@@ -51,12 +51,14 @@ exports.getOne = async (req, res) => {
 };
 exports.updateCarAddress = async (req, res) => {
     try {
-        const { kilometer, ignitionStatus } = req.body;
+        const { name,kilometer, ignitionStatus,network } = req.body;
         const { id } = req.params
 
         const updateData = {};
         updateData.kilometer = kilometer
         updateData.ignitionStatus = ignitionStatus
+        updateData.name = name
+        updateData.network = network
 
 
         const isCarAddress = await CarAddressModel.findOneAndUpdate(

@@ -3,9 +3,9 @@ const { default: mongoose } = require("mongoose");
 
 exports.createCarmodel = async (req, res) => {
     try {
-        const { name, logo, carFactoryId, carTechnicalId, carAddressId } = req.body
+        const { name, logo, carFactoryId, carTechnicalId, carAddressId,defaultItem } = req.body
         const personnelId = req.personnel._id
-        const createCarModel = await CarModel.create({ name, logo, personnelId, carFactoryId, carTechnicalId, carAddressId })
+        const createCarModel = await CarModel.create({ name, logo, personnelId, carFactoryId, carTechnicalId, carAddressId,defaultItem })
         return res.status(201).json(createCarModel);
     } catch (error) {
         console.error(error);
@@ -76,7 +76,7 @@ exports.getOne = async (req, res) => {
 };
 exports.updateCarmodel = async (req, res) => {
     try {
-        const { name, logo, carFactoryId, carTechnicalId, carAddressId } = req.body;
+        const { name, logo, carFactoryId, carTechnicalId, carAddressId ,defaultItem } = req.body;
         const { id } = req.params
 
         const updateData = {};
@@ -84,7 +84,8 @@ exports.updateCarmodel = async (req, res) => {
         updateData.logo = logo
         updateData.carFactoryId = carFactoryId
         updateData.carTechnicalId = carTechnicalId
-        updateData.carAddressId = carAddressId
+        updateData.carAddressId = carAddressId 
+        updateData.defaultItem = defaultItem 
 
 
         const iscarModel = await CarModel.findOneAndUpdate(
@@ -113,7 +114,7 @@ exports.removeCarmodel = async (req, res) => {
             return res.status(404).json({ message: "مدل ماشین یافت نشد" });
         }
 
-        return res.status(200).json({ message: "کارخانه با موفقیت حذف شد" });
+        return res.status(200).json({ message: "مدل ماشین با موفقیت حذف شد" });
 
     } catch (error) {
         console.log(error);
