@@ -21,7 +21,7 @@ const schema = new mongoose.Schema({
     network:{
         type: String,
         required: true,
-        enum : ["test1","test2"]
+        enum : ["Can","K-line"]
     }
 
 
