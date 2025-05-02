@@ -18,7 +18,7 @@ const authPersonnel = async (req, res, next) => {
 
     const personnel = await personnelModel.findOne({_id : jwtToken._id}).lean();        
 
-    Reflect.deleteProperty(personnel, "password");
+    // Reflect.deleteProperty(personnel, "password");
 
     req.personnel = personnel;
 

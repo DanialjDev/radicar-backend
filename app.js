@@ -16,6 +16,7 @@ const carFactoryRoutes = require("./src/modules/carFactory/carFactory.routes")
 const carAddressRoutes = require("./src/modules/carAddress/carAddress.routes")
 const carTechniacalRoutes = require("./src/modules/carTeschnical/carTeschnical.routes")
 const carModelRoutes = require("./src/modules/carModel/carModel.routes")
+const hardwareRoutes = require("./src/modules/hardware/hardware.routes")
 
 
 require("dotenv").config()
@@ -47,6 +48,7 @@ app.use("/carFactory", carFactoryRoutes)
 app.use("/carAddress", carAddressRoutes)
 app.use("/carTechniacal", carTechniacalRoutes)
 app.use("/carModel", carModelRoutes)
+app.use("/hardware", hardwareRoutes)
 
 
 //404 error 

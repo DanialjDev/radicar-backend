@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.route("/").post(auth,ticketController.createTicket)
 router.route("/").get(auth,ticketController.getAll)
-router.route("/:id").get(auth,ticketController.getOne)
+router.route("/:id").get(authPersonnel,ticketController.getOne)
 router.route("/:id/update").put(authPersonnel,ticketController.updateTicket)
 
 
