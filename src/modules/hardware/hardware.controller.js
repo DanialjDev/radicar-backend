@@ -53,7 +53,15 @@ exports.getOne = async (req, res) => {
         }
         let findCar = await carModel.findOne({simcard : findHardware.simcard})
 
+        if (!findCar) {
+            return res.status(404).json({ message: "دستگاه یافت نشد" });
+        }
+
         let findCarModel = await carmModel.findOne({_id : findCar.carmodelId})
+
+        if (!findCarModel) {
+            return res.status(404).json({ message: "دستگاه یافت نشد" });
+        }
         
         let findAddress = await carAddressModel.findOne({_id : findCarModel.carAddressId }).select("kilometer ignitionStatus network")
         return res.status(200).json(findAddress);
