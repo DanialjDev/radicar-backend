@@ -15,11 +15,16 @@ const schema = new mongoose.Schema({
         ref: "Personnel",
         require: true
     },
+    categoryId: {
+        type: mongoose.Types.ObjectId,
+        ref: "CategoryTechnical",
+        require: true
+    },
     defaultItem: {
         type: Boolean,
         required: true
     }
-
+    
 }, { timestamps: true })
 
 const CarTechnical = mongoose.model("CarTechnical", schema)

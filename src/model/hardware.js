@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
         type:String,
         default : "",
         required : false 
-    }
+    },
 
 }, { timestamps: true })
 

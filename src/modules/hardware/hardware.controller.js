@@ -1,23 +1,41 @@
 const { generateAccessToken } = require("../../middlewares/auth.token");
 const hardwareModel = require("../../model/hardware");
+const carModel = require("../../model/car");
+const carmModel = require("../../model/carModel");
+const carAddressModel = require("../../model/carAddress");
 const { default: mongoose } = require("mongoose");
 
 exports.createHardware = async (req, res) => {
     try {
-        const { uniqueId,simcard } = req.body
-       
-        const createHardware = await hardwareModel.create({ uniqueId,simcard })
+        const { simcard } = req.body
 
-        const accessToken = generateAccessToken(user._id);
+        const findHardware = await hardwareModel.findOne({ simcard })
+        if (!findHardware) {
+            const createHardware = await hardwareModel.create({ simcard })
+
+            const accessToken = generateAccessToken(createHardware._id);
+            const updateHardware = await hardwareModel.findOneAndUpdate(
+                { _id: createHardware._id },
+                { accessToken },
+                {
+                    projection: { accessToken: 1, _id: 0 },
+                    returnDocument: "after",
+                }
+            );
+            res.cookie("access_token", accessToken, { httpOnly: true });
+            return res.status(201).json(updateHardware);
+        }
+
+        const accessToken = generateAccessToken(findHardware._id);
         const updateHardware = await hardwareModel.findOneAndUpdate(
-            { _id : createHardware._id },
+            { _id: findHardware._id },
             { accessToken },
             {
-              projection: { accessToken: 1, _id: 0 }, 
-              returnDocument: "after",
+                projection: { accessToken: 1, _id: 0 },
+                returnDocument: "after",
             }
-          );
-        res.cookie("access_token", accessToken, { httpOnly: true }); 
+        ).select("accessToken");
+        res.cookie("access_token", accessToken, { httpOnly: true });
         return res.status(201).json(updateHardware);
     } catch (error) {
         console.error(error);
@@ -28,10 +46,17 @@ exports.createHardware = async (req, res) => {
 };
 exports.getOne = async (req, res) => {
     try {
-        const { name, logo, carFactoryId, carTechnicalId, carAddressId,defaultItem } = req.body
-        const personnelId = req.personnel._id
-        const createCarModel = await CarModel.create({ name, logo, personnelId, carFactoryId, carTechnicalId, carAddressId,defaultItem })
-        return res.status(201).json(createCarModel);
+        const hardwareId = req.hardware._id
+        const findHardware = await hardwareModel.findOne({ _id: hardwareId._id })
+        if (!findHardware) {
+            return res.status(404).json({ message: "دستگاه یافت نشد" });
+        }
+        let findCar = await carModel.findOne({simcard : findHardware.simcard})
+
+        let findCarModel = await carmModel.findOne({_id : findCar.carmodelId})
+        
+        let findAddress = await carAddressModel.findOne({_id : findCarModel.carAddressId }).select("kilometer ignitionStatus network")
+        return res.status(200).json(findAddress);
     } catch (error) {
         console.error(error);
         return res.status(500).json({
@@ -42,7 +67,7 @@ exports.getOne = async (req, res) => {
 
 exports.updateHardware = async (req, res) => {
     try {
-        const { name, logo, carFactoryId, carTechnicalId, carAddressId ,defaultItem } = req.body;
+        const { name, logo, carFactoryId, carTechnicalId, carAddressId, defaultItem } = req.body;
         const { id } = req.params
 
         const updateData = {};
@@ -50,8 +75,8 @@ exports.updateHardware = async (req, res) => {
         updateData.logo = logo
         updateData.carFactoryId = carFactoryId
         updateData.carTechnicalId = carTechnicalId
-        updateData.carAddressId = carAddressId 
-        updateData.defaultItem = defaultItem 
+        updateData.carAddressId = carAddressId
+        updateData.defaultItem = defaultItem
 
 
         const iscarModel = await CarModel.findOneAndUpdate(

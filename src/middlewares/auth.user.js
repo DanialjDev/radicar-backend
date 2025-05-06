@@ -18,6 +18,9 @@ const auth = async (req, res, next) => {
 
     const user = await userModel.findOne({_id : jwtToken._id}).lean();
     // if (!user) return next();
+    if (user == null) {
+      return res.status(401).json({ message: 'token not correct' });
+    }
     
     Reflect.deleteProperty(user, "password");
 

@@ -4,6 +4,7 @@ const hardwareModel = require("../model/hardware");
 const auth = async (req, res, next) => {
   try {
   const authHeader = req.header("Authorization")?.split(" ");
+  
 
   if (authHeader?.length !== 2) {
     return res.status(403).json({
@@ -17,11 +18,12 @@ const auth = async (req, res, next) => {
     const jwtToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const hardware = await hardwareModel.findOne({_id : jwtToken._id}).lean();
-    // if (!user) return next();
-    
-    // Reflect.deleteProperty(user, "password");
+    if (hardware == null) {
+      
+      return res.status(401).json({ message: 'token not correct' });
+    }
 
-    req.user = user;
+    req.hardware = hardware;
 
     next();
   } catch (error) {

@@ -18,6 +18,9 @@ const authPersonnel = async (req, res, next) => {
 
     const personnel = await personnelModel.findOne({_id : jwtToken._id}).lean();        
 
+    if (personnel == null) {
+      return res.status(401).json({ message: 'token not correct' });
+    }
     // Reflect.deleteProperty(personnel, "password");
 
     req.personnel = personnel;
