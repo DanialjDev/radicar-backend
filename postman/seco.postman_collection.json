@@ -4,7 +4,7 @@
 		"name": "seco",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "30950862",
-		"_collection_link": "https://supportchat.postman.co/workspace/My-Workspace~7bfe59cd-a242-4787-829c-0008acab9ac3/collection/30950862-faeb0bf0-3724-4684-9be9-e2dfd62146db?source=collection_link"
+		"_collection_link": "https://supportchat.postman.co/workspace/My-Workspace~7bfe59cd-a242-4787-829c-0008acab9ac3/collection/30950862-faeb0bf0-3724-4684-9be9-e2dfd62146db?action=share&source=collection_link&creator=30950862"
 	},
 	"item": [
 		{
@@ -771,14 +771,14 @@
 					"response": []
 				},
 				{
-					"name": "getAll",
+					"name": "getAll personnel",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDYxNjkyMTQsImV4cCI6MTc0NjE5ODAxNH0.xGJaHhoQslN6vo4zyBstVL0awZx78uWEw-KSUHulL5s",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDY1NjE4OTEsImV4cCI6MTc0NjU5MDY5MX0.WxPiw9rqZU4HSE54XeQQADWCcHJwiDgm4MwnbtmOnYE",
 									"type": "string"
 								}
 							]
@@ -786,14 +786,45 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carFactory",
+							"raw": "http://localhost:4000/carFactory/personnel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"carFactory"
+								"carFactory",
+								"personnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDY1NjE3MTUsImV4cCI6MTc0NjU5MDUxNX0.9h8k3s4HvoahGamfcUicpP4rTqmj0vxoUCAztgMqDvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/carFactory/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carFactory",
+								"user"
 							]
 						}
 					},
@@ -1348,6 +1379,37 @@
 							"path": [
 								"carModel",
 								"680b4442a3fa8b35234b3c63"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get with user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDY1NjE3MTUsImV4cCI6MTc0NjU5MDUxNX0.9h8k3s4HvoahGamfcUicpP4rTqmj0vxoUCAztgMqDvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/carFactory/68132a35132203eab2619f44/carModel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"carFactory",
+								"68132a35132203eab2619f44",
+								"carModel"
 							]
 						}
 					},

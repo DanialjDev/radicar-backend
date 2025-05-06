@@ -1,4 +1,5 @@
 const CarFactoryModel = require("../../model/carFactory");
+const CarModel = require("../../model/carModel");
 const { default: mongoose } = require("mongoose");
 
 exports.createCarFactory = async (req, res) => {
@@ -44,6 +45,19 @@ exports.getOne = async (req, res) => {
             })
 
         return res.status(200).json(findCarFactory);
+
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.getOneWithUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const findCarModel = await CarModel.find({ carFactoryId :id })
+
+
+        return res.status(200).json(findCarModel);
 
     } catch (error) {
         console.log(error);
