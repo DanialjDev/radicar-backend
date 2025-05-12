@@ -2,12 +2,42 @@ const { generateAccessToken } = require("../../middlewares/auth.token");
 const settingTechnicalModel = require("../../model/settingTechnical");
 const carModel = require("../../model/car");
 const carmModel = require("../../model/carModel");
-const carAddressModel = require("../../model/carAddress");
+const carTechnicalModel = require("../../model/carTechnical");
 const { default: mongoose } = require("mongoose");
 
 exports.getAllIncrement = async (req, res) => {
     try {
         const userId = req.user._id
+        const { carId } = req.query
+        console.log(carId);
+        
+
+        const findCar = await carModel.findOne({ _id: carId, userId })
+
+        const findModel = await carmModel.findOne({ _id: findCar.carmodelId })
+
+        const technicalIds = findModel.carTechnicalId;
+
+        for (const techId of technicalIds) {
+            const exists = await settingTechnicalModel.findOne({
+                userId,
+                carId: carId,
+                technicalId: techId
+            });
+
+            if (!exists) {
+                const findTechnical =await carTechnicalModel.findOne({_id : techId})
+                await settingTechnicalModel.create({
+                    currentNumber:0,
+                    incrementNumber:0,
+                    userId,
+                    carId: carId,
+                    technicalId: techId,
+                    categoryId : findTechnical.categoryId
+                });
+            } 
+        }
+
 
         const findSettingTechnical = await settingTechnicalModel.find({ userId })
             .populate({
@@ -47,6 +77,35 @@ exports.getAllIncrement = async (req, res) => {
 exports.getAllCurrent = async (req, res) => {
     try {
         const userId = req.user._id
+        const { carId } = req.query
+        console.log(carId);
+        
+
+        const findCar = await carModel.findOne({ _id: carId, userId })
+
+        const findModel = await carmModel.findOne({ _id: findCar.carmodelId })
+
+        const technicalIds = findModel.carTechnicalId;
+
+        for (const techId of technicalIds) {
+            const exists = await settingTechnicalModel.findOne({
+                userId,
+                carId: carId,
+                technicalId: techId
+            });
+
+            if (!exists) {
+                const findTechnical =await carTechnicalModel.findOne({_id : techId})
+                await settingTechnicalModel.create({
+                    currentNumber:0,
+                    incrementNumber:0,
+                    userId,
+                    carId: carId,
+                    technicalId: techId,
+                    categoryId : findTechnical.categoryId
+                });
+            } 
+        }
 
         const findSettingTechnical = await settingTechnicalModel.find({ userId })
             .populate({
@@ -89,6 +148,7 @@ exports.updateSettingTechnicalIncrement = async (req, res) => {
     try {
         const userId = req.user._id
         const updatedGroups = req.body;
+
 
     if (!Array.isArray(updatedGroups)) {
         return res.status(400).json({ message: 'داده ارسالی باید آرایه‌ای از دسته‌بندی‌ها باشد' });
