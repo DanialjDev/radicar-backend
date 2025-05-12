@@ -1294,7 +1294,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDY1NDM3MjIsImV4cCI6MTc0NjU3MjUyMn0.MO1IRqA58Dea746hOIHwZ2GuJNTY8p_g_BhDBu9Veks",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDcwNjkzNzgsImV4cCI6MTc0NzEyNjk3OH0.-a3jT6WlJ0Wv9zY1MX-pvoXaEoThZaFJeBvo7bb_SWY",
 									"type": "string"
 								}
 							]
@@ -1988,7 +1988,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwNzAwMzMsImV4cCI6MTc0NzEyNzYzM30.njKRnI1-naH85peVQ9qApovem0Yo1OzR5GpNn1Ci8nQ",
 									"type": "string"
 								}
 							]
@@ -1996,7 +1996,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/settingTechnical/Increment",
+							"raw": "http://localhost:4000/settingTechnical/Increment?carId=6821b9180a80e3cfff7a15fc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2005,6 +2005,12 @@
 							"path": [
 								"settingTechnical",
 								"Increment"
+							],
+							"query": [
+								{
+									"key": "carId",
+									"value": "6821b9180a80e3cfff7a15fc"
+								}
 							]
 						}
 					},
@@ -2026,7 +2032,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/settingTechnical/current",
+							"raw": "http://localhost:4000/settingTechnical/current?carId=6821b9180a80e3cfff7a15fc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2035,6 +2041,12 @@
 							"path": [
 								"settingTechnical",
 								"current"
+							],
+							"query": [
+								{
+									"key": "carId",
+									"value": "6821b9180a80e3cfff7a15fc"
+								}
 							]
 						}
 					},
@@ -2048,7 +2060,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwNzAwMzMsImV4cCI6MTc0NzEyNzYzM30.njKRnI1-naH85peVQ9qApovem0Yo1OzR5GpNn1Ci8nQ",
 									"type": "string"
 								}
 							]
@@ -2057,7 +2069,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n  {\r\n    \"categoryId\": \"6819bc74a302ab0eb98b36d4\",\r\n    \"items\": [\r\n      {\r\n        \"_id\": \"6821b9180a80e3cfff7a1603\",\r\n        \"incrementNumber\": 5\r\n      },\r\n      {\r\n        \"_id\": \"6821b9180a80e3cfff7a1605\",\r\n        \"incrementNumber\": 12\r\n      }\r\n    ]\r\n  }\r\n]",
+							"raw": "[\r\n  {\r\n    \"categoryId\": \"6819bc74a302ab0eb98b36d4\",\r\n    \"items\": [\r\n      {\r\n        \"_id\": \"682232670427650e77027e66\",\r\n        \"incrementNumber\": 5\r\n      },\r\n      {\r\n        \"_id\": \"682232750427650e77027e6c\",\r\n        \"incrementNumber\": 12\r\n      }\r\n    ]\r\n  }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
