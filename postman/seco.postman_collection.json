@@ -1218,7 +1218,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDcwNDAxNzYsImV4cCI6MTc0NzA5Nzc3Nn0.LRtq0Hw0-9ZCNiDpchtVeWJe1_TTsNpMWv5DX6aK0AI",
 									"type": "string"
 								}
 							]
@@ -1227,7 +1227,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"1010تست\",\r\n    \"defaultNumber\": 5000,\r\n    \"defaultItem\": \"true\",\r\n    \"categoryId\": \"6819bc74a302ab0eb98b36d4\"\r\n}",
+							"raw": "{\r\n    // \"name\": \"1010تست\",\r\n    // \"defaultNumber\": 5000,\r\n    // \"defaultItem\": \"true\",\r\n    \"categoryId\": \"6819bc74a302ab0eb98b36d4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1235,7 +1235,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carTechniacal/680a1531324fc39cb0a23d31/update",
+							"raw": "http://localhost:4000/carTechniacal/680b416e1d4a380c07573982/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1243,7 +1243,7 @@
 							"port": "4000",
 							"path": [
 								"carTechniacal",
-								"680a1531324fc39cb0a23d31",
+								"680b416e1d4a380c07573982",
 								"update"
 							]
 						}
@@ -1463,7 +1463,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU1NjgwOTQsImV4cCI6MTc0NTU5Njg5NH0.-E-3LAkOSM3OeGuOp-PEiz8iLMusbFZdWqvraMPId8Q",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDY2MzIwNTgsImV4cCI6MTc0NjY2MDg1OH0.B4-H0FoOdeVo_sjMYLh0MDLMAKf28jDB2HuSQwbiJFQ",
 									"type": "string"
 								}
 							]
@@ -1471,7 +1471,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carModel/680b4442a3fa8b35234b3c63/remove",
+							"raw": "http://localhost:4000/carModel/681a5036cda2fb02ba1f25a2/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1479,7 +1479,7 @@
 							"port": "4000",
 							"path": [
 								"carModel",
-								"680b4442a3fa8b35234b3c63",
+								"681a5036cda2fb02ba1f25a2",
 								"remove"
 							]
 						}
@@ -1528,7 +1528,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YzJiNDYyOTE3MzliYzJhMThiNDkiLCJpYXQiOjE3NDY1NTQ2OTIsImV4cCI6MTc0NjU4MzQ5Mn0.GgYGk72YRJLEsC-83HlLj1MR6KYdox6nsV-ZpZjyMtc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YzJiNDYyOTE3MzliYzJhMThiNDkiLCJpYXQiOjE3NDcwMzk1MTYsImV4cCI6MTc0NzA5NzExNn0.41beqBfaZ64qZ4D4QciPhj33H4QIquAObALfiTHeP44",
 									"type": "string"
 								}
 							]
@@ -1544,6 +1544,45 @@
 							"port": "4000",
 							"path": [
 								"hardware"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Kilometer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YzJiNDYyOTE3MzliYzJhMThiNDkiLCJpYXQiOjE3NDcwMzk1MTYsImV4cCI6MTc0NzA5NzExNn0.41beqBfaZ64qZ4D4QciPhj33H4QIquAObALfiTHeP44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentKilometer\" : 15000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/hardware/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"hardware",
+								"update"
 							]
 						}
 					},
@@ -1775,7 +1814,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDY1NDI5MTcsImV4cCI6MTc0NjU3MTcxN30.t1NbcazNMt4PEqbPHJpmNpHI7NHOw5jrk_8hBvatpGU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
 									"type": "string"
 								}
 							]
@@ -1854,7 +1893,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDY1NDM5OTAsImV4cCI6MTc0NjU3Mjc5MH0.pbkg0iz7ODzO19V6HFrCH6EAbC2mCbIj3b0VTwiYCCE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
 									"type": "string"
 								}
 							]
@@ -1862,7 +1901,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/car/681a4c6ecd252c85d49b77aa/remove",
+							"raw": "http://localhost:4000/car/6821b4737bac63cffd2bda38/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1870,7 +1909,7 @@
 							"port": "4000",
 							"path": [
 								"car",
-								"681a4c6ecd252c85d49b77aa",
+								"6821b4737bac63cffd2bda38",
 								"remove"
 							]
 						}
@@ -1931,6 +1970,149 @@
 							"path": [
 								"car",
 								"681a3405153dd39a804d7217"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "settingTechnical",
+			"item": [
+				{
+					"name": "getAll Increment (برای گرفتن گیلومتر های ثبتی برای ارسال اعلان)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/settingTechnical/Increment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"settingTechnical",
+								"Increment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll current (برای ثبت کیلومتر های اولیه برای تعویض قطعات)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/settingTechnical/current",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"settingTechnical",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Increment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"categoryId\": \"6819bc74a302ab0eb98b36d4\",\r\n    \"items\": [\r\n      {\r\n        \"_id\": \"6821b9180a80e3cfff7a1603\",\r\n        \"incrementNumber\": 5\r\n      },\r\n      {\r\n        \"_id\": \"6821b9180a80e3cfff7a1605\",\r\n        \"incrementNumber\": 12\r\n      }\r\n    ]\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/settingTechnical/update-increment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"settingTechnical",
+								"update-increment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update current Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwMzkzMzgsImV4cCI6MTc0NzA2ODEzOH0.uUZcUnbEYAVwffMJz8QqBVb-7i8xQ9S8moRz0L0xtrk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"categoryId\": \"6819bc74a302ab0eb98b36d4\",\r\n    \"items\": [\r\n      {\r\n        \"_id\": \"6821b9180a80e3cfff7a1603\",\r\n        \"currentNumber\": 55\r\n      },\r\n      {\r\n        \"_id\": \"6821b9180a80e3cfff7a1605\",\r\n        \"currentNumber\": 77\r\n      }\r\n    ]\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/settingTechnical/update-current",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"settingTechnical",
+								"update-current"
 							]
 						}
 					},

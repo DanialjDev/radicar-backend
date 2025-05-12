@@ -45,7 +45,7 @@ exports.createCar = async (req, res) => {
                 populate: {
                     path: 'carTechnicalId',
                     model: 'CarTechnical',
-                    select: 'name defaultNumber'
+                    select: 'name defaultNumber categoryId'
                 }
             })
             .populate({
@@ -54,6 +54,7 @@ exports.createCar = async (req, res) => {
             })
 
         const carTechnicalList = findCar.carmodelId.carTechnicalId;
+        
 
         for (const item of carTechnicalList) {
 
@@ -62,6 +63,7 @@ exports.createCar = async (req, res) => {
               incrementNumber: 0,
               technicalId: item._id,
               carId:car._id,
+              categoryId : item.categoryId,
               userId
             });
         }
@@ -137,12 +139,11 @@ exports.getOne = async (req, res) => {
 };
 exports.updateCar = async (req, res) => {
     try {
-        const { name, currentKilometer } = req.body;
+        const { name } = req.body;
         const { id } = req.params
 
         const updateData = {};
         updateData.name = name
-        updateData.currentKilometer = currentKilometer
 
 
 

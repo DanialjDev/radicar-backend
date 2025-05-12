@@ -26,6 +26,11 @@ const schema = new mongoose.Schema({
         ref: "User",
         require: true
     },
+    categoryId: {
+        type: mongoose.Types.ObjectId,
+        ref: "CategoryTechnical",
+        require: true
+    }
 
 }, { timestamps: true })
 
