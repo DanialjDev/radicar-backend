@@ -448,7 +448,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1MWY0MWE1Mjg4YWFhMmM3ZDdjMWUiLCJpYXQiOjE3NDQ0Nzg2MzcsImV4cCI6MTc0NDUwNzQzN30.aqy6sKfs4B4_x2wEDJv8stz4R5z6lqHkXfQ8dJpu8xs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDc0MDUwNjYsImV4cCI6MTc0NzQ2MjY2Nn0.Rqi9DWCOz-O0TKWkPPbBQl5Q2kGir9o-MYFxfM5hqbU",
 									"type": "string"
 								}
 							]
@@ -456,36 +456,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/ticket",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"ticket"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getOne ticket",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDYxNjg5NjQsImV4cCI6MTc0NjE5Nzc2NH0.X0DPO0qe9K7qQ5teT_xBq6kphitrRfRuSJQMQHFBHjI",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:4000/ticket/67fb7330e790e96775a09bca",
+							"raw": "http://localhost:4000/ticket/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -493,7 +464,99 @@
 							"port": "4000",
 							"path": [
 								"ticket",
-								"67fb7330e790e96775a09bca"
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll ticket for personnel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDc0MDU0NTksImV4cCI6MTc0NzQ2MzA1OX0.5TkUkdcwO7xZvLtNr05Ae_uQlysX2IkpWxUVYVdAl08",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/ticket/personnel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"ticket",
+								"personnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne ticket user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDc0MDUwNjYsImV4cCI6MTc0NzQ2MjY2Nn0.Rqi9DWCOz-O0TKWkPPbBQl5Q2kGir9o-MYFxfM5hqbU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/ticket/6827491499e7e5d31d974e3f/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"ticket",
+								"6827491499e7e5d31d974e3f",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne ticket user personnel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDc0MDU0NTksImV4cCI6MTc0NzQ2MzA1OX0.5TkUkdcwO7xZvLtNr05Ae_uQlysX2IkpWxUVYVdAl08",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/ticket/6827491499e7e5d31d974e3f/personnel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"ticket",
+								"6827491499e7e5d31d974e3f",
+								"personnel"
 							]
 						}
 					},
@@ -1158,7 +1221,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDU0ODQ2MjMsImV4cCI6MTc0NTUxMzQyM30.M_sYwbo7dwxwAtG46YM6ruSwBNEJ8xLec3k36lOuv40",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDc0MDU0NTksImV4cCI6MTc0NzQ2MzA1OX0.5TkUkdcwO7xZvLtNr05Ae_uQlysX2IkpWxUVYVdAl08",
 									"type": "string"
 								}
 							]

@@ -23,7 +23,7 @@ exports.getAllCarTechniacal = async (req, res) => {
                 select: "_id name",
             })
             .populate({
-                path: "CategoryTechnical",
+                path: "categoryId",
                 select: "_id fname ename",
             })
 
