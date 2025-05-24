@@ -30,6 +30,10 @@ const schema = new mongoose.Schema({
         required: true,
         default:0
     },
+    isActive: {
+        type: Boolean,
+        required: true
+    },
 
 }, { timestamps: true })
 

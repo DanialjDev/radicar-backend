@@ -16,6 +16,10 @@ const schema = new mongoose.Schema({
         type: String, 
         required : true
     },
+    file:{
+        type: String, 
+        required : false 
+    }
     // isSeen:{
     //     type : Boolean,
     //     required : true,

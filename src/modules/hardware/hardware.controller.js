@@ -51,7 +51,7 @@ exports.getOne = async (req, res) => {
         if (!findHardware) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
         }
-        let findCar = await carModel.findOne({simcard : findHardware.simcard})
+        let findCar = await carModel.findOneAndUpdate({simcard : findHardware.simcard},{isActive : true})
 
         if (!findCar) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
@@ -85,6 +85,7 @@ exports.updateHardware = async (req, res) => {
 
         const updateData = {};
         updateData.currentKilometer = currentKilometer
+        updateData.isActive = true
 
 
 

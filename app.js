@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const cron = require('node-cron');
+const { deactivateExpiredCars } = require('./src/utiles/deactivateExpiredCars/deactivateExpiredCars');
 
 // const moment = require('moment');
 
@@ -62,6 +64,19 @@ app.use((req, res) => {
     console.log("this path not found", req.path);
     return res.status(404).json({ message: "url not found" })
 })
+
+// cron
+
+
+
+cron.schedule('* * * * *', () => {
+  deactivateExpiredCars();
+});
+
+
+
+
+
 
 const port = process.env.PORT
 app.listen(port, (err) => {

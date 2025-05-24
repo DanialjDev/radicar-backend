@@ -6,6 +6,17 @@ const schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true,
+        unique: true, // مثل: "peugeot-206-tip5-1395"
+        lowercase: true,
+        trim: true
+    },
+    buildYear: {
+        type: Number,
+        required: true // مثلاً: 1395
+    },
     personnelId: {
         type: mongoose.Types.ObjectId,
         ref: "Personnel",
@@ -14,7 +25,7 @@ const schema = new mongoose.Schema({
     logo: {
         type: String,
         required: false,
-        default : ""
+        default: ""
     },
     carFactoryId: {
         type: mongoose.Types.ObjectId,

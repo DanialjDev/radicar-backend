@@ -44,6 +44,17 @@ exports.register = async (req, res) => {
       return res.status(500).json({ message: "خطای سرور" });
   }
 };
+exports.getAll = async (req, res) => {
+  try {
+    const findUsers = await userModel.find({}).select("name phoneNumber createdAt updatedAt").lean()
+
+    return res.json(findUsers)
+    
+  } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "خطای سرور" });
+  }
+};
 
 exports.login = async (req, res) => {
   try {

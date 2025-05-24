@@ -3,9 +3,9 @@ const { default: mongoose } = require("mongoose");
 
 exports.createCarmodel = async (req, res) => {
     try {
-        const { name, logo, carFactoryId, carTechnicalId, carAddressId,defaultItem } = req.body
+        const { name, logo, carFactoryId, carTechnicalId, carAddressId,defaultItem ,slug,buildYear} = req.body
         const personnelId = req.personnel._id
-        const createCarModel = await CarModel.create({ name, logo, personnelId, carFactoryId, carTechnicalId, carAddressId,defaultItem })
+        const createCarModel = await CarModel.create({ name, logo, personnelId, carFactoryId, carTechnicalId, carAddressId,defaultItem,slug,buildYear })
         return res.status(201).json(createCarModel);
     } catch (error) {
         console.error(error);
@@ -76,7 +76,7 @@ exports.getOne = async (req, res) => {
 };
 exports.updateCarmodel = async (req, res) => {
     try {
-        const { name, logo, carFactoryId, carTechnicalId, carAddressId ,defaultItem } = req.body;
+        const { name, logo, carFactoryId, carTechnicalId, carAddressId ,defaultItem,slug,buildYear } = req.body;
         const { id } = req.params
 
         const updateData = {};
@@ -86,7 +86,9 @@ exports.updateCarmodel = async (req, res) => {
         updateData.carTechnicalId = carTechnicalId
         updateData.carAddressId = carAddressId 
         updateData.defaultItem = defaultItem 
-
+        updateData.slug = slug 
+        updateData.buildYear = buildYear 
+        
 
         const iscarModel = await CarModel.findOneAndUpdate(
             { _id: id },

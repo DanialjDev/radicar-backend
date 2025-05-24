@@ -46,7 +46,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\":\"13822003\",\r\n    \"phoneNumber\": \"09376050802\"\r\n}",
+							"raw": "{\r\n    \"password\":\"123456\",\r\n    \"phoneNumber\": \"09909208747\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -54,12 +54,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/login",
+							"raw": "http://localhost:3000/user/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"user",
 								"login"
@@ -132,6 +132,36 @@
 								"user",
 								"67f51f41a5288aaa2c7d7c1e",
 								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODFjNTkzYjBhNWRmYmQwZWY2Y2E3YWUiLCJpYXQiOjE3NDgwNjkyNTgsImV4cCI6MTc0ODEyNjg1OH0.8qFYUle1GTkSYFWlSVmbkMe7pPkrqdxnrfguISrkMZc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								""
 							]
 						}
 					},
@@ -245,7 +275,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"amsh\" ,\r\n    \"password\":\"13822003\" ,\r\n    \"phoneNumber\":\"09376050802\" \r\n}",
+							"raw": "{\r\n    \"username\":\"admin@radicartech.ir\" ,\r\n    \"password\":\"admin123456\" ,\r\n    \"phoneNumber\":\"09909208747\" \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -253,12 +283,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/personnel/login",
+							"raw": "http://localhost:3000/personnel/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"personnel",
 								"login"
@@ -410,7 +440,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1MWY0MWE1Mjg4YWFhMmM3ZDdjMWUiLCJpYXQiOjE3NDQ1MzIyMTAsImV4cCI6MTc0NDU2MTAxMH0.CqV16EU6LjkP1UGTLhEvEctFWu8uNp1mKLCClR1FemI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDc0MDUwNjYsImV4cCI6MTc0NzQ2MjY2Nn0.Rqi9DWCOz-O0TKWkPPbBQl5Q2kGir9o-MYFxfM5hqbU",
 									"type": "string"
 								}
 							]
@@ -419,7 +449,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"ویرایش شماره\",\r\n    \"status\": \"Open\", //\"Close\", \"Open\"\r\n    \"priority\": \"High\" ,//\"High\", \"Medium\", \"Low\"\r\n    \"message\" : \"\"\r\n}",
+							"raw": "{\r\n    \"title\": \"ویرایش شماره\",\r\n    \"status\": \"Open\", //\"Close\", \"Open\"\r\n    \"priority\": \"High\" ,//\"High\", \"Medium\", \"Low\"\r\n    \"message\" : \"سلام\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -508,7 +538,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDc0MDUwNjYsImV4cCI6MTc0NzQ2MjY2Nn0.Rqi9DWCOz-O0TKWkPPbBQl5Q2kGir9o-MYFxfM5hqbU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODFjNTc1MzBhNWRmYmQwZWY2Y2E3YTYiLCJpYXQiOjE3NDc2NDMyNjksImV4cCI6MTc0NzcwMDg2OX0.IqD34XrDjcRZVrxxUaViDy3nINzrZMMjUSR8TqH8x2U",
 									"type": "string"
 								}
 							]
@@ -516,15 +546,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/ticket/6827491499e7e5d31d974e3f/user",
+							"raw": "http://localhost:3000/ticket/6820cee00a5dfbd0ef6caa90/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"ticket",
-								"6827491499e7e5d31d974e3f",
+								"6820cee00a5dfbd0ef6caa90",
 								"user"
 							]
 						}
@@ -624,7 +654,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ticketId\": \"67fb7330e790e96775a09bca\",\r\n    \"message\": \"سلام\"\r\n}",
+							"raw": "{\r\n    \"ticketId\": \"67fb7330e790e96775a09bca\",\r\n    \"file\" : \"\" ,\r\n    \"message\": \"سلام\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -654,7 +684,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y1MWY0MWE1Mjg4YWFhMmM3ZDdjMWUiLCJpYXQiOjE3NDQ1MzM1MTUsImV4cCI6MTc0NDU2MjMxNX0.k--tk2VAe2q57rjM6LSWMZkNS5hniRvAJc1GLc6EG5M",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODFjNTc1MzBhNWRmYmQwZWY2Y2E3YTYiLCJpYXQiOjE3NDc2NDMyNjksImV4cCI6MTc0NzcwMDg2OX0.IqD34XrDjcRZVrxxUaViDy3nINzrZMMjUSR8TqH8x2U",
 									"type": "string"
 								}
 							]
@@ -663,7 +693,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ticketId\": \"67faa25537af9638a286b68d\",\r\n    \"message\": \"سلام\"\r\n}",
+							"raw": "{\r\n    \"ticketId\": \"6820b5610a5dfbd0ef6caa13\",\r\n    \"file\" : \"\" ,\r\n    \"message\": \"پیام تستی از پستمن\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -671,12 +701,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/message/user",
+							"raw": "http://localhost:3000/message/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"message",
 								"user"
@@ -693,7 +723,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDYxNjg5NjQsImV4cCI6MTc0NjE5Nzc2NH0.X0DPO0qe9K7qQ5teT_xBq6kphitrRfRuSJQMQHFBHjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODFjNTc1MzBhNWRmYmQwZWY2Y2E3YTYiLCJpYXQiOjE3NDc2NDMyNjksImV4cCI6MTc0NzcwMDg2OX0.IqD34XrDjcRZVrxxUaViDy3nINzrZMMjUSR8TqH8x2U",
 									"type": "string"
 								}
 							]
@@ -701,89 +731,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/message/ticket/67fb7330e790e96775a09bca",
+							"raw": "http://localhost:3000/message/ticket/6820b5610a5dfbd0ef6caa13",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"message",
 								"ticket",
-								"67fb7330e790e96775a09bca"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "settingUser",
-			"item": [
-				{
-					"name": "get setting",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDQ3MDM2NTcsImV4cCI6MTc0NDczMjQ1N30.BvzjvBBARpDlahKg9WiFUfv-pSPALgGpDdDvYC1NEjA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:4000/usersetting",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"usersetting"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update setting",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDQ3MDM2NTcsImV4cCI6MTc0NDczMjQ1N30.BvzjvBBARpDlahKg9WiFUfv-pSPALgGpDdDvYC1NEjA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"settingNotification\": {\r\n    \"status\": \"Active\",\r\n    \"importance\": \"Medium\",\r\n    \"repeat\": \"Every month\"\r\n  },\r\n  \"customKilometers\": {\r\n    \"engineOil\": 7000,           // روغن موتور\r\n    \"hydraulicOil\": 70000,       // روغن هیدرولیک\r\n    \"brakeOil\": 80000,           // روغن ترمز\r\n    \"manualGearOil\": 40000,      // روغن گیربکس دستی\r\n    \"automaticGearOil\": 60000,   // روغن گیربکس اتومات\r\n\r\n    \"oilFilter\": 5000,           // فیلتر روغن\r\n    \"airFilter\": 5000,           // فیلتر هوا\r\n    \"cabinFilter\": 5000,         // فیلتر اتاق\r\n    \"fuelFilter\": 15000,         // صافی بنزین\r\n\r\n    \"timingBelt\": 50000,         // تسمه تایم\r\n    \"alternatorBelt\": 60000,     // تسمه دینام\r\n    \"hydraulicBelt\": 50000,      // تسمه هیدرولیک\r\n\r\n    \"clutchDisc\": 50000,         // دیسک و صفحه\r\n    \"sparkPlug\": 30000,          // شمع و وایر\r\n    \"frontBrakePads\": 30000,     // لنت دیسکی جلو\r\n    \"rearBrakePads\": 80000,      // لنت کاسه‌ای عقب\r\n    \"canister\": 100000,          // کنیستر\r\n    \"suspension\": 60000,         // جلوبندی\r\n    \"alternator\": 60000,         // دینام\r\n    \"catalyst\": 60000,           // کاتالیزور\r\n    \"tire\": 50000                // لاستیک\r\n  }\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:4000/usersetting/update",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"usersetting",
-								"update"
+								"6820b5610a5dfbd0ef6caa13"
 							]
 						}
 					},
@@ -1366,7 +1323,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"پژو\",\r\n    \"logo\": \"\",\r\n    \"carFactoryId\": \"6809fd929f1a4127a4f03f13\",\r\n    \"carTechnicalId\": [\"680b416e1d4a380c07573982\",\"6819bc92a302ab0eb98b36d7\"],\r\n    \"carAddressId\": \"680b41941d4a380c07573985\"\r\n}",
+							"raw": "{\r\n    \"name\": \"پژو\",\r\n    \"logo\": \"\",\r\n    \"carFactoryId\": \"6809fd929f1a4127a4f03f13\",\r\n    \"carTechnicalId\": [\"680b416e1d4a380c07573982\",\"6819bc92a302ab0eb98b36d7\"],\r\n    \"carAddressId\": \"680b41941d4a380c07573985\",\r\n    \"slug\":\"peugeot-206-tip5-1395\",\r\n    \"buildYear\" : 1395\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1495,7 +1452,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"پژو\",\r\n    \"logo\": \"\",\r\n    \"carFactoryId\": \"6809fd929f1a4127a4f03f13\",\r\n    \"carTechnicalId\": [\"680b416e1d4a380c07573982\"],\r\n    \"carAddressId\": \"680b41941d4a380c07573985\"\r\n}",
+							"raw": "{\r\n    \"name\": \"پژو\",\r\n    \"logo\": \"\",\r\n    \"carFactoryId\": \"6809fd929f1a4127a4f03f13\",\r\n    \"carTechnicalId\": [\r\n        \"680b416e1d4a380c07573982\"\r\n    ],\r\n    \"carAddressId\": \"680b41941d4a380c07573985\",\r\n    \"slug\": \"peugeot-206-tip5-1395\",\r\n    \"buildYear\": 1395\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2051,7 +2008,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDcwNzAwMzMsImV4cCI6MTc0NzEyNzYzM30.njKRnI1-naH85peVQ9qApovem0Yo1OzR5GpNn1Ci8nQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODFjNTc1MzBhNWRmYmQwZWY2Y2E3YTYiLCJpYXQiOjE3NDgwODU5NTksImV4cCI6MTc0ODE0MzU1OX0.q9o01hYAguINHpcOnVsgvfArjlbnbAhZIEYwedCVY04",
 									"type": "string"
 								}
 							]
@@ -2059,12 +2016,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/settingTechnical/Increment?carId=6821b9180a80e3cfff7a15fc",
+							"raw": "http://localhost:3000/settingTechnical/Increment?carId=682c50442ca9d8f80a7b9b83",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"settingTechnical",
 								"Increment"
@@ -2072,7 +2029,7 @@
 							"query": [
 								{
 									"key": "carId",
-									"value": "6821b9180a80e3cfff7a15fc"
+									"value": "682c50442ca9d8f80a7b9b83"
 								}
 							]
 						}
@@ -2155,7 +2112,7 @@
 					"response": []
 				},
 				{
-					"name": "update current Copy",
+					"name": "update current",
 					"request": {
 						"auth": {
 							"type": "bearer",

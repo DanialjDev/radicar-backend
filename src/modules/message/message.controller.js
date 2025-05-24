@@ -1,12 +1,17 @@
 const messageModel = require("../../model/message");
+const ticketModel = require("../../model/ticket");
 const { default: mongoose } = require("mongoose");
 
 exports.createMessageUser = async (req, res) => {
   try {
-    const { ticketId,message } = req.body;
+    const { ticketId,message,file } = req.body;
 
+    const findTicket = await ticketModel.findOneAndUpdate({ _id : ticketId },{ supportStatus : "pending" , userStatus : "answered"})
+    if (!findTicket) {
+      return res.status(404).json({message : "تیکت یافت نشد"})
+    }
     const createMessage = await messageModel.create({
-      ticketId,sender:req.user._id,message
+      ticketId,sender:req.user._id,message,file
     });
 
     return res.status(201).json({ message: "پیام با موفقیت ارسال شد" });
@@ -29,6 +34,11 @@ exports.createMessageUser = async (req, res) => {
 exports.createMessagePersonnel = async (req, res) => {
   try {
     const { ticketId,message } = req.body;
+
+    const findTicket = await ticketModel.findOneAndUpdate({ _id : ticketId },{ supportStatus : "answered" , userStatus : "pending"})
+    if (!findTicket) {
+      return res.status(404).json({message : "تیکت یافت نشد"})
+    }
 
     const createMessage = await messageModel.create({
       ticketId,sender:req.personnel._id,message

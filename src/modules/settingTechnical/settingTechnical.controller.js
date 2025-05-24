@@ -10,7 +10,7 @@ exports.getAllIncrement = async (req, res) => {
         const userId = req.user._id
         const { carId } = req.query
         console.log(carId);
-        
+
 
         const findCar = await carModel.findOne({ _id: carId, userId })
 
@@ -26,16 +26,16 @@ exports.getAllIncrement = async (req, res) => {
             });
 
             if (!exists) {
-                const findTechnical =await carTechnicalModel.findOne({_id : techId})
+                const findTechnical = await carTechnicalModel.findOne({ _id: techId })
                 await settingTechnicalModel.create({
-                    currentNumber:0,
-                    incrementNumber:0,
+                    currentNumber: 0,
+                    incrementNumber: 0,
                     userId,
                     carId: carId,
                     technicalId: techId,
-                    categoryId : findTechnical.categoryId
+                    categoryId: findTechnical.categoryId
                 });
-            } 
+            }
         }
 
 
@@ -43,27 +43,32 @@ exports.getAllIncrement = async (req, res) => {
             .populate({
                 path: "categoryId",
                 select: "_id fname",
-            }).select("incrementNumber")
+            })
+            .populate({
+                path: "technicalId",
+                select: "_id name",
+            })
+            .select("incrementNumber")
 
-            const grouped = {};
+        const grouped = {};
 
-            findSettingTechnical.forEach(item => {
-                const catId = item.categoryId._id;
-                const catName = item.categoryId.fname;
-        
-                if (!grouped[catId]) {
-                    grouped[catId] = {
-                        categoryId: catId,
-                        categoryName: catName,
-                        items: []
-                    };
-                }
-        
-                grouped[catId].items.push(item);
-            });
-        
-            const result = Object.values(grouped);
-            res.json(result);
+        findSettingTechnical.forEach(item => {
+            const catId = item.categoryId._id;
+            const catName = item.categoryId.fname;
+
+            if (!grouped[catId]) {
+                grouped[catId] = {
+                    categoryId: catId,
+                    categoryName: catName,
+                    items: []
+                };
+            }
+
+            grouped[catId].items.push(item);
+        });
+
+        const result = Object.values(grouped);
+        res.json(result);
 
 
         return res.status(200).json(findSettingTechnical);
@@ -79,7 +84,7 @@ exports.getAllCurrent = async (req, res) => {
         const userId = req.user._id
         const { carId } = req.query
         console.log(carId);
-        
+
 
         const findCar = await carModel.findOne({ _id: carId, userId })
 
@@ -95,43 +100,47 @@ exports.getAllCurrent = async (req, res) => {
             });
 
             if (!exists) {
-                const findTechnical =await carTechnicalModel.findOne({_id : techId})
+                const findTechnical = await carTechnicalModel.findOne({ _id: techId })
                 await settingTechnicalModel.create({
-                    currentNumber:0,
-                    incrementNumber:0,
+                    currentNumber: 0,
+                    incrementNumber: 0,
                     userId,
                     carId: carId,
                     technicalId: techId,
-                    categoryId : findTechnical.categoryId
+                    categoryId: findTechnical.categoryId
                 });
-            } 
+            }
         }
 
         const findSettingTechnical = await settingTechnicalModel.find({ userId })
             .populate({
                 path: "categoryId",
                 select: "_id fname",
-            }).select("currentNumber")
+            }).populate({
+                path: "technicalId",
+                select: "_id name",
+            })
+            .select("currentNumber")
 
-            const grouped = {};
+        const grouped = {};
 
-            findSettingTechnical.forEach(item => {
-                const catId = item.categoryId._id;
-                const catName = item.categoryId.fname;
-        
-                if (!grouped[catId]) {
-                    grouped[catId] = {
-                        categoryId: catId,
-                        categoryName: catName,
-                        items: []
-                    };
-                }
-        
-                grouped[catId].items.push(item);
-            });
-        
-            const result = Object.values(grouped);
-            res.json(result);
+        findSettingTechnical.forEach(item => {
+            const catId = item.categoryId._id;
+            const catName = item.categoryId.fname;
+
+            if (!grouped[catId]) {
+                grouped[catId] = {
+                    categoryId: catId,
+                    categoryName: catName,
+                    items: []
+                };
+            }
+
+            grouped[catId].items.push(item);
+        });
+
+        const result = Object.values(grouped);
+        res.json(result);
 
         return res.status(200).json(findSettingTechnical);
     } catch (error) {
@@ -150,15 +159,15 @@ exports.updateSettingTechnicalIncrement = async (req, res) => {
         const updatedGroups = req.body;
 
 
-    if (!Array.isArray(updatedGroups)) {
-        return res.status(400).json({ message: 'داده ارسالی باید آرایه‌ای از دسته‌بندی‌ها باشد' });
-    }
+        if (!Array.isArray(updatedGroups)) {
+            return res.status(400).json({ message: 'داده ارسالی باید آرایه‌ای از دسته‌بندی‌ها باشد' });
+        }
 
         for (const group of updatedGroups) {
             for (const item of group.items) {
                 if (typeof item.incrementNumber === 'number') {
                     await settingTechnicalModel.findByIdAndUpdate(
-                        {_id : item._id , userId},
+                        { _id: item._id, userId },
                         { incrementNumber: item.incrementNumber },
                         { new: true }
                     );
@@ -177,15 +186,15 @@ exports.updateSettingTechnicalCurrent = async (req, res) => {
         const userId = req.user._id
         const updatedGroups = req.body;
 
-    if (!Array.isArray(updatedGroups)) {
-        return res.status(400).json({ message: 'داده ارسالی باید آرایه‌ای از دسته‌بندی‌ها باشد' });
-    }
+        if (!Array.isArray(updatedGroups)) {
+            return res.status(400).json({ message: 'داده ارسالی باید آرایه‌ای از دسته‌بندی‌ها باشد' });
+        }
 
         for (const group of updatedGroups) {
             for (const item of group.items) {
                 if (typeof item.currentNumber === 'number') {
                     await settingTechnicalModel.findByIdAndUpdate(
-                        {_id : item._id , userId},
+                        { _id: item._id, userId },
                         { currentNumber: item.currentNumber },
                         { new: true }
                     );

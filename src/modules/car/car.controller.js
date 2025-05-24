@@ -29,7 +29,7 @@ exports.createCar = async (req, res) => {
             return res.status(404).json({ message: " دستگاهی با این شماره ثبت شده است" });
         }
 
-        const car = await carModel.create({ name, userId, carFactoryId, carmodelId, simcard})
+        const car = await carModel.create({ name, userId, carFactoryId, carmodelId, simcard,isActive:false})
 
         findCar = await carModel.findOne({ userId, simcard })
             .populate({

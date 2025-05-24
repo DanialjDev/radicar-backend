@@ -28,7 +28,18 @@ const schema = new mongoose.Schema({
         enum: ["High", "Medium", "Low"],
         default: "Medium",
         required: true
-    }
+    },
+    userStatus: {
+        type: String,
+        enum: ['pending', 'answered'],
+        default: 'answered'
+    },
+
+    supportStatus: {
+        type: String,
+        enum: ['pending', 'answered'],
+        default: 'pending' 
+    },
 }, { timestamps: true })
 
 const ticket = mongoose.model("Ticket", schema)
