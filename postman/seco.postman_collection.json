@@ -166,6 +166,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDgzNTIxNDMsImV4cCI6MTc0ODQwOTc0M30.hkAlxYG5HY4yGp2guBafQAZwqF5uBhyL-92-0mkP5RU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"token"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

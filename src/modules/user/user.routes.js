@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 router.route("/register").post(userController.register)
+router.route("/token").get(auth,userController.getOne)
 router.route("/login").post(userController.login)
 
 router.route("/:id/update").put(auth,userController.updateUser)

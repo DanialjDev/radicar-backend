@@ -55,6 +55,17 @@ exports.getAll = async (req, res) => {
       return res.status(500).json({ message: "خطای سرور" });
   }
 };
+exports.getOne = async (req, res) => {
+  try {
+    const findUser = await userModel.findOne({_id : req.user._id}).select("name phoneNumber createdAt updatedAt").lean()
+
+    return res.json(findUser)
+    
+  } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "خطای سرور" });
+  }
+};
 
 exports.login = async (req, res) => {
   try {
