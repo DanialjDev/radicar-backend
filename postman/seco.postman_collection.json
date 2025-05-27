@@ -46,7 +46,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\":\"123456\",\r\n    \"phoneNumber\": \"09909208747\"\r\n}",
+							"raw": "{\r\n    \"password\":\"13822003\",\r\n    \"phoneNumber\": \"09376050802\"\r\n    // \"password\":\"123456\",\r\n    // \"phoneNumber\": \"09909208747\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1314,7 +1314,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZhMzRjODMzZjUyMjVjOWM0NmY3ODQiLCJpYXQiOjE3NDcwNjkzNzgsImV4cCI6MTc0NzEyNjk3OH0.-a3jT6WlJ0Wv9zY1MX-pvoXaEoThZaFJeBvo7bb_SWY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODFjNTkzYjBhNWRmYmQwZWY2Y2E3YWUiLCJpYXQiOjE3NDgyNDUyNDksImV4cCI6MTc0ODMwMjg0OX0.6Fv-5wlJPPqoujBd0JrqG3CWyrWm_vbBF-smfYgLR5A",
 									"type": "string"
 								}
 							]
@@ -1331,12 +1331,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carModel/add",
+							"raw": "http://localhost:3000/carModel/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carModel",
 								"add"
@@ -1526,12 +1526,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/hardware/auth",
+							"raw": "http://localhost:3000/hardware/auth",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"hardware",
 								"auth"
@@ -1577,7 +1577,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YzJiNDYyOTE3MzliYzJhMThiNDkiLCJpYXQiOjE3NDcwMzk1MTYsImV4cCI6MTc0NzA5NzExNn0.41beqBfaZ64qZ4D4QciPhj33H4QIquAObALfiTHeP44",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YzJiNDYyOTE3MzliYzJhMThiNDkiLCJpYXQiOjE3NDgzMzkzNzQsImV4cCI6MTc0ODM5Njk3NH0.fC0FKzCMiDttKTDP8nuKVJdTlYr_woKzHJp6ILdfXm4",
 									"type": "string"
 								}
 							]
@@ -1586,7 +1586,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"currentKilometer\" : 15000\r\n}",
+							"raw": "{\r\n    \"currentKilometer\" : 39000\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1594,12 +1594,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/hardware/update",
+							"raw": "http://localhost:3000/hardware/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"hardware",
 								"update"
@@ -2145,6 +2145,72 @@
 							"path": [
 								"settingTechnical",
 								"update-current"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDgzNTIxNDMsImV4cCI6MTc0ODQwOTc0M30.hkAlxYG5HY4yGp2guBafQAZwqF5uBhyL-92-0mkP5RU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/notification/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notification",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ZlMGYxYzI2ZjFjZDBkOTIyZGMxZWEiLCJpYXQiOjE3NDgzNTIxNDMsImV4cCI6MTc0ODQwOTc0M30.hkAlxYG5HY4yGp2guBafQAZwqF5uBhyL-92-0mkP5RU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/notification/6835b966d4a4f1bf59e99976/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notification",
+								"6835b966d4a4f1bf59e99976",
+								"update"
 							]
 						}
 					},

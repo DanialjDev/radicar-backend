@@ -22,6 +22,7 @@ const hardwareRoutes = require("./src/modules/hardware/hardware.routes")
 const categoryTechnicalRoutes = require("./src/modules/CategoryTechnical/categoryTechnical.routes")
 const carRoutes = require("./src/modules/car/car.routes")
 const settingTechnicalRoutes = require("./src/modules/settingTechnical/settingTechnical.routes")
+const notificationRoutes = require("./src/modules/notification/notification.routes")
 
 
 require("dotenv").config()
@@ -57,6 +58,7 @@ app.use("/hardware", hardwareRoutes)
 app.use("/categoryTechnical", categoryTechnicalRoutes)
 app.use("/car", carRoutes)
 app.use("/settingTechnical", settingTechnicalRoutes)
+app.use("/notification", notificationRoutes)
 
 
 //404 error 
@@ -66,9 +68,6 @@ app.use((req, res) => {
 })
 
 // cron
-
-
-
 cron.schedule('* * * * *', () => {
   deactivateExpiredCars();
 });

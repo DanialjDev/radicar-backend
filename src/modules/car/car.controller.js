@@ -2,6 +2,9 @@ const carModel = require("../../model/car");
 const hardwareModel = require("../../model/hardware");
 const settingTechnicalModel = require("../../model/settingTechnical");
 const { default: mongoose } = require("mongoose");
+const { checkAndCreateNotifications } = require("../../utiles/checkAndCreateNotifications/checkAndCreateNotifications");
+const request = require('request');
+
 
 exports.checkSimCard = async (req, res) => {
     try {
@@ -21,7 +24,7 @@ exports.checkSimCard = async (req, res) => {
 exports.createCar = async (req, res) => {
     try {
 
-        const { name, carFactoryId, carmodelId, simcard, carId } = req.body
+        const { name, carFactoryId, carmodelId, simcard } = req.body
         const userId = req.user._id
 
         let findCar = await hardwareModel.findOne({ simcard }).select("_id simcard uniqueId")
@@ -157,7 +160,11 @@ exports.updateCar = async (req, res) => {
             return res.status(404).json({ message: " ماشین یافت نشد" });
         }
 
+
+        
+
         return res.status(200).json({ message: "اطلاعات با موفقیت ویرایش شد" });
+
 
     } catch (error) {
         console.log(error);

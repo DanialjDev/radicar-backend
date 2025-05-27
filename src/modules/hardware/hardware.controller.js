@@ -4,6 +4,7 @@ const carModel = require("../../model/car");
 const carmModel = require("../../model/carModel");
 const carAddressModel = require("../../model/carAddress");
 const { default: mongoose } = require("mongoose");
+const { checkAndCreateNotifications } = require("../../utiles/checkAndCreateNotifications/checkAndCreateNotifications");
 
 exports.createHardware = async (req, res) => {
     try {
@@ -51,19 +52,19 @@ exports.getOne = async (req, res) => {
         if (!findHardware) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
         }
-        let findCar = await carModel.findOneAndUpdate({simcard : findHardware.simcard},{isActive : true})
+        let findCar = await carModel.findOneAndUpdate({ simcard: findHardware.simcard }, { isActive: true })
 
         if (!findCar) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
         }
 
-        let findCarModel = await carmModel.findOne({_id : findCar.carmodelId})
+        let findCarModel = await carmModel.findOne({ _id: findCar.carmodelId })
 
         if (!findCarModel) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
         }
-        
-        let findAddress = await carAddressModel.findOne({_id : findCarModel.carAddressId }).select("kilometer ignitionStatus network")
+
+        let findAddress = await carAddressModel.findOne({ _id: findCarModel.carAddressId }).select("kilometer ignitionStatus network")
         return res.status(200).json(findAddress);
     } catch (error) {
         console.error(error);
@@ -90,16 +91,22 @@ exports.updateHardware = async (req, res) => {
 
 
         const iscar = await carModel.findOneAndUpdate(
-            { simcard : findHardware.simcard },
-            updateData,
-            { new: true }
-        );
+            { simcard: findHardware.simcard },
+            updateData,{new : true});
 
         if (!iscar) {
             return res.status(404).json({ message: " ماشین یافت نشد" });
         }
 
-        return res.status(200).json({ message: "اطلاعات با موفقیت ویرایش شد" });
+        const result = await checkAndCreateNotifications(iscar._id, iscar.currentKilometer);
+        console.log(result);
+
+        // return res.status(200).json({ message: "اطلاعات با موفقیت ویرایش شد" });
+        return res.json({
+            message: 'Kilometer updated and notifications checked',
+            notifications: result,
+            car : iscar
+        });
 
     } catch (error) {
         console.log(error);

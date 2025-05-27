@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 
 
 const schema = new mongoose.Schema({
-    currentNumber: {
+    currentNumber: {  // این متغییر برای ثبت کیلومتری است که کاربر قطعه رو اخرین بار عوض کرد
         type: Number,
-        required: true
+        required: true,
+        default : 0
     },
-    incrementNumber : {
+    incrementNumber : {// این متغییر برای ثبت کیلومتری است که کاربر میخواد هر n کیلومتر قطعه عوض بشه
         type: Number,
-        required: true
+        required: true,
+        default : 0
     },
     technicalId: {
         type: mongoose.Types.ObjectId,
@@ -34,7 +36,7 @@ const schema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const CategoryTechnical = mongoose.model("SettingTechnical", schema)
+const SettingTechnical   = mongoose.model("SettingTechnical", schema)
 
 
-module.exports = CategoryTechnical
+module.exports = SettingTechnical 
