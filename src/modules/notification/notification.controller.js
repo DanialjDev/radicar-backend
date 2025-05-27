@@ -1,5 +1,6 @@
 const Notification = require('../../model/notification');
 const technicalModel = require('../../model/carTechnical');
+const carModel = require('../../model/car');
 const settingTechnicalModel = require('../../model/settingTechnical');
 const CategoryTechnical = require('../../model/categoryTechnical');
 const { default: mongoose } = require('mongoose');
@@ -112,25 +113,29 @@ exports.update = async (req, res) => {
       return res.status(404).json({ message: "اعلان یافت نشد" })
     }
 
-    const findSettingTechnical = await settingTechnicalModel.findOne({ technicalId: findNotification.technicalId, userId: req.user._id })
-
     let upddateSetting = null
-    if (findSettingTechnical.incrementNumber > 0) {
-      const newCurrentNumber = findSettingTechnical.incrementNumber + findSettingTechnical.currentNumber
-      upddateSetting = await settingTechnicalModel.findOneAndUpdate(
-        { technicalId: findNotification.technicalId, userId: req.user._id },
-        {currentNumber : newCurrentNumber }
-      )
-    } else if (findSettingTechnical.incrementNumber === 0) {
-      const findTechnical = await technicalModel.findOne({_id : findNotification.technicalId })
-      const newCurrentNumber = findTechnical.defaultNumber + findSettingTechnical.currentNumber
-      upddateSetting = await settingTechnicalModel.findOneAndUpdate(
-        { technicalId: findNotification.technicalId, userId: req.user._id },
-        {currentNumber : newCurrentNumber }
-      )
-    }
+    const findSettingTechnical = await settingTechnicalModel.findOne({ technicalId: findNotification.technicalId, userId: req.user._id })
+    const findCar = await carModel.findOne({ _id: findSettingTechnical.carId })
+    upddateSetting = await settingTechnicalModel.findOneAndUpdate(
+      { technicalId: findNotification.technicalId, userId: req.user._id },
+      { currentNumber: findCar.currentKilometer }
+    )
+    // if (findSettingTechnical.incrementNumber > 0) {
+    //   const newCurrentNumber = findSettingTechnical.incrementNumber + findSettingTechnical.currentNumber
+    //   upddateSetting = await settingTechnicalModel.findOneAndUpdate(
+    //     { technicalId: findNotification.technicalId, userId: req.user._id },
+    //     {currentNumber : newCurrentNumber }
+    //   )
+    // } else if (findSettingTechnical.incrementNumber === 0) {
+    //   const findTechnical = await technicalModel.findOne({_id : findNotification.technicalId })
+    //   const newCurrentNumber = findTechnical.defaultNumber + findSettingTechnical.currentNumber
+    //   upddateSetting = await settingTechnicalModel.findOneAndUpdate(
+    //     { technicalId: findNotification.technicalId, userId: req.user._id },
+    //     {currentNumber : newCurrentNumber }
+    //   )
+    // }
 
-    return res.json({notification : findNotification, upddateSetting })
+    return res.json({ notification: findNotification, upddateSetting })
 
 
 
