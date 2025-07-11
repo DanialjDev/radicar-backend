@@ -7,39 +7,44 @@ const { default: mongoose } = require("mongoose");
 
 exports.getAllIncrement = async (req, res) => {
     try {
-        const userId = req.user._id
-        const { carId } = req.query
-        console.log(carId);
+        const userId = req.user._id;
+        const { carId } = req.query;
 
+        const findCar = await carModel.findOne({ _id: carId, userId });
+        if (!findCar) {
+            return res.status(404).json({ message: "خودرو یافت نشد" });
+        }
 
-        const findCar = await carModel.findOne({ _id: carId, userId })
-
-        const findModel = await carmModel.findOne({ _id: findCar.carmodelId })
+        const findModel = await carmModel.findOne({ _id: findCar.carmodelId });
+        if (!findModel) {
+            return res.status(404).json({ message: "مدل خودرو یافت نشد" });
+        }
 
         const technicalIds = findModel.carTechnicalId;
 
         for (const techId of technicalIds) {
             const exists = await settingTechnicalModel.findOne({
                 userId,
-                carId: carId,
+                carId,
                 technicalId: techId
             });
 
             if (!exists) {
-                const findTechnical = await carTechnicalModel.findOne({ _id: techId })
+                const findTechnical = await carTechnicalModel.findOne({ _id: techId });
+                if (!findTechnical) continue;
+
                 await settingTechnicalModel.create({
                     currentNumber: 0,
                     incrementNumber: 0,
                     userId,
-                    carId: carId,
+                    carId,
                     technicalId: techId,
                     categoryId: findTechnical.categoryId
                 });
             }
         }
 
-
-        const findSettingTechnical = await settingTechnicalModel.find({ userId })
+        const findSettingTechnical = await settingTechnicalModel.find({ userId, carId }) // ✅ فیلتر carId اضافه شد
             .populate({
                 path: "categoryId",
                 select: "_id fname",
@@ -48,7 +53,7 @@ exports.getAllIncrement = async (req, res) => {
                 path: "technicalId",
                 select: "_id name",
             })
-            .select("incrementNumber")
+            .select("incrementNumber categoryId technicalId");
 
         const grouped = {};
 
@@ -68,10 +73,8 @@ exports.getAllIncrement = async (req, res) => {
         });
 
         const result = Object.values(grouped);
-        res.json(result);
+        return res.status(200).json(result);
 
-
-        return res.status(200).json(findSettingTechnical);
     } catch (error) {
         console.error(error);
         return res.status(500).json({
@@ -79,48 +82,56 @@ exports.getAllIncrement = async (req, res) => {
         });
     }
 };
+
 exports.getAllCurrent = async (req, res) => {
     try {
-        const userId = req.user._id
-        const { carId } = req.query
-        console.log(carId);
+        const userId = req.user._id;
+        const { carId } = req.query;
 
+        const findCar = await carModel.findOne({ _id: carId, userId });
+        if (!findCar) {
+            return res.status(404).json({ message: "خودرو یافت نشد" });
+        }
 
-        const findCar = await carModel.findOne({ _id: carId, userId })
-
-        const findModel = await carmModel.findOne({ _id: findCar.carmodelId })
+        const findModel = await carmModel.findOne({ _id: findCar.carmodelId });
+        if (!findModel) {
+            return res.status(404).json({ message: "مدل خودرو یافت نشد" });
+        }
 
         const technicalIds = findModel.carTechnicalId;
 
         for (const techId of technicalIds) {
             const exists = await settingTechnicalModel.findOne({
                 userId,
-                carId: carId,
+                carId,
                 technicalId: techId
             });
 
             if (!exists) {
-                const findTechnical = await carTechnicalModel.findOne({ _id: techId })
+                const findTechnical = await carTechnicalModel.findOne({ _id: techId });
+                if (!findTechnical) continue;
+
                 await settingTechnicalModel.create({
                     currentNumber: 0,
                     incrementNumber: 0,
                     userId,
-                    carId: carId,
+                    carId,
                     technicalId: techId,
                     categoryId: findTechnical.categoryId
                 });
             }
         }
 
-        const findSettingTechnical = await settingTechnicalModel.find({ userId })
+        const findSettingTechnical = await settingTechnicalModel.find({ userId, carId }) // اضافه شدن carId به فیلتر
             .populate({
                 path: "categoryId",
                 select: "_id fname",
-            }).populate({
+            })
+            .populate({
                 path: "technicalId",
                 select: "_id name",
             })
-            .select("currentNumber")
+            .select("currentNumber categoryId technicalId");
 
         const grouped = {};
 
@@ -140,18 +151,16 @@ exports.getAllCurrent = async (req, res) => {
         });
 
         const result = Object.values(grouped);
-        res.json(result);
+        return res.status(200).json(result);
 
-        return res.status(200).json(findSettingTechnical);
     } catch (error) {
-
-
         console.error(error);
         return res.status(500).json({
             message: 'خطای داخلی سرور'
         });
     }
 };
+
 
 exports.updateSettingTechnicalIncrement = async (req, res) => {
     try {
