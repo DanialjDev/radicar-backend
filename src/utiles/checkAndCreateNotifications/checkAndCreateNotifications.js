@@ -61,6 +61,9 @@ radicartech.ir`;
         });
       }
 
+      sendWebPushMetrix(userId, 'موعد سرویس', message);
+      console.log('web push sent successfully due');
+
 
       due++;
     }
@@ -91,6 +94,10 @@ radicartech.ir.`;
           level: 'early',
         });
       }
+      sendWebPushMetrix(userId, 'موعد سرویس', message);
+      console.log('web push sent successfully early');
+      
+
 
       early++;
     }
@@ -98,9 +105,6 @@ radicartech.ir.`;
 
   return { early, due };
 }
-
-
-
 
 async function sendSMS({ phoneNumber, message, userId, carId, technicalId, level }) {
   try {
@@ -149,6 +153,45 @@ async function sendSMS({ phoneNumber, message, userId, carId, technicalId, level
 }
 
 
+async function sendWebPushMetrix(userId, title,message) {
+  try {
+    const payload = {
+      recipients: [userId],
+      channel: "WEB_PUSH",
+      message: {
+        title: title, 
+        body: message,
+        icon: "https://amsh.storage.c2.liara.space/icon512_rounded.png",
+        url: "https://radicartech.ir",
+      }
+    };
+
+    const response = await axios.post(
+      'https://entry.metrix.ir/push',
+      payload,
+      {
+        headers: {
+          'X-Application-Id': 'bwohkihbzajiubw', 
+          'X-API-Key': "e215a382-d18f-4774-af0a-a9c986c708b1",    
+          'Content-Type': 'application/json'
+        }
+      }    );
+
+    if (response.status === 200) {
+      console.log('Web push sent successfully');
+      return true;
+    } else {
+      console.error('Failed to send web push:', response.data);
+      return false;
+    }
+  } catch (error) {
+    console.error('Error sending web push:', error.response?.data || error.message);
+    return false;
+  }
+}
 
 
-module.exports = { checkAndCreateNotifications };
+module.exports = {
+  checkAndCreateNotifications,
+  sendWebPushMetrix, 
+};

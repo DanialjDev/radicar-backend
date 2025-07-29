@@ -21,6 +21,10 @@ const schema = new mongoose.Schema({
         type:String,
         default : "",
         required : false 
+    },
+    isAcceptNotification :{
+        type:Boolean,
+        default : false
     }
 },{ timestamps: true })
 

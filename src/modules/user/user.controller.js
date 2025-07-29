@@ -6,8 +6,6 @@ const {
   generateAccessToken,
   generateRefreshToken,
 } = require("../../middlewares/auth.token");
-const { default: mongoose } = require("mongoose");
-
 exports.register = async (req, res) => {
   try {
     const { name,password,phoneNumber,email } =req.body;
@@ -71,6 +69,8 @@ exports.login = async (req, res) => {
   try {
     const { phoneNumber, password } = req.body;
     const user = await userModel.findOne({ phoneNumber });
+    console.log(phoneNumber, password);
+    
     if (user) {
       const isValidPassword = bcrypt.compareSync(password, user.password);
       if (isValidPassword) {
@@ -128,13 +128,13 @@ exports.resetPassword = async (req, res) => {
 };
 exports.updateUser = async (req, res) => {
   try {
-    const { name,phoneNumber, password } = req.body;
+    const { name,phoneNumber, password,isAcceptNotification } = req.body;
     const {id} = req.params
     
       const updateData = {};
       updateData.name = name
       updateData.phoneNumber = phoneNumber
-
+      updateData.isAcceptNotification = isAcceptNotification
       if (password) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
