@@ -4,6 +4,9 @@ const cors = require("cors");
 const cron = require('node-cron');
 const { deactivateExpiredCars } = require('./src/utiles/deactivateExpiredCars/deactivateExpiredCars');
 const cookieParser = require("cookie-parser");
+const socketIoConnection = require("./src/utiles/socketConnection");
+const socketHandler = require("./src/socket.io/index");
+const http = require("http");
 
 const userRoutes = require("./src/modules/user/user.routes");
 const settingUserRoutes = require("./src/modules/settingUser/settingUser.routes");
@@ -26,13 +29,6 @@ require("./configs/db");
 
 const app = express();
 
-// ✅ Force redirect to HTTPS (only works behind proxy like Liara)
-// app.use((req, res, next) => {
-//     if (req.headers['x-forwarded-proto'] !== 'https') {
-//         return res.redirect(301, 'https://' + req.headers.host + req.originalUrl);
-//     }
-//     next();
-// });
 
 // Body parser
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
@@ -72,12 +68,16 @@ cron.schedule('* * * * *', () => {
     deactivateExpiredCars();
 });
 
-// Start server
-const port = process.env.PORT;
-app.listen(port, (err) => {
-    if (err) {
-        console.log("error", err);
-    } else {
-        console.log(`connected to port ${port}`);
-    }
+
+
+
+const port =  3000;
+const httpServer = http.createServer(app);
+const io = socketIoConnection(httpServer);
+socketHandler(io);
+httpServer.on("error", (err) => {
+  console.error("HTTP server error:", err);
+});
+httpServer.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });

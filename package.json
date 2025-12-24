@@ -12,6 +12,7 @@
     "node-cron": "^4.0.5",
     "nodemon": "^3.1.9",
     "request": "^2.88.2",
+    "socket.io": "^4.8.1",
     "uuid": "^11.1.0"
   },
   "name": "seco_app",
