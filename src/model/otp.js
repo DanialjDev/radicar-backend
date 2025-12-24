@@ -11,7 +11,12 @@ const schema = new mongoose.Schema({
     userId:{
         type : mongoose.Types.ObjectId,
         ref : "User",
-        require : true
+        require : false
+    },
+    repairmanId:{
+        type : mongoose.Types.ObjectId,
+        ref : "Repairman",
+        require : false
     },
     createdAt: {
         type: Date,

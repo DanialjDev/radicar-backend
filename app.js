@@ -23,6 +23,8 @@ const categoryTechnicalRoutes = require("./src/modules/CategoryTechnical/categor
 const carRoutes = require("./src/modules/car/car.routes");
 const settingTechnicalRoutes = require("./src/modules/settingTechnical/settingTechnical.routes");
 const notificationRoutes = require("./src/modules/notification/notification.routes");
+const fileRoutes = require("./src/modules/file/file.routes");
+const repairmanRoutes = require("./src/modules/repairman/repairman.routes");
 
 require("dotenv").config();
 require("./configs/db");
@@ -56,6 +58,8 @@ app.use("/categoryTechnical", categoryTechnicalRoutes);
 app.use("/car", carRoutes);
 app.use("/settingTechnical", settingTechnicalRoutes);
 app.use("/notification", notificationRoutes);
+app.use("/file", fileRoutes);
+app.use("/repairman", repairmanRoutes);
 
 // 404 error handler
 app.use((req, res) => {

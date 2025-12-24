@@ -8,6 +8,7 @@ const fileSchema = new mongoose.Schema({
     size: { type: Number, required: true },
     uploadedByPersonnel: { type: mongoose.Schema.Types.ObjectId, ref: 'Personnel' },
     uploadedByUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    uploadedByRepairman: { type: mongoose.Schema.Types.ObjectId, ref: 'Repairman' },
 }, { timestamps: true });
 
 module.exports = mongoose.model('File', fileSchema);

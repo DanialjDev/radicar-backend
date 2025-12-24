@@ -1,6 +1,8 @@
 const otpModel = require("./../../model/otp");
 const userModel = require("./../../model/user");
+const repairmanModel = require("./../../model/repair/repairman");
 const request = require("request");
+const { generateAccessToken } = require("../../middlewares/auth.token");
 
 
 
@@ -9,6 +11,7 @@ exports.createOtp = async (req, res) => {
     const {phoneNumber} = req.body
     const code = Math.floor(10000 + Math.random() * 90000);
     const findUser = await userModel.findOne({phoneNumber})    
+    const findRepairman = await repairmanModel.findOne({phoneNumber})    
     request.post(
         {
           url: "http://ippanel.com/api/select",
@@ -54,8 +57,15 @@ exports.createOtp = async (req, res) => {
 
       );
       const userId = findUser._id
-      const createOtp = await otpModel.create({code,userId})
-      return res.status(201).json({message : "پیامک ارسال شد"});
+      const findRepairmanId = findRepairman._id
+      if (findUser) {
+        const createOtp = await otpModel.create({code,userId})
+        return res.status(201).json({message : "پیامک ارسال شد"});
+      }
+      if (findRepairman) {
+        const createOtp = await otpModel.create({code,findRepairmanId})
+        return res.status(201).json({message : "پیامک ارسال شد"});
+      }
 
     
   } catch (error) {
@@ -66,14 +76,49 @@ exports.checkOtp = async (req, res) => {
   try {
     const {phoneNumber,code} = req.body
     const findUser = await userModel.findOne({phoneNumber})
-    const findOtp = await otpModel.findOne({code , userId : findUser._id})
-    console.log(findOtp);
+    const findRepairman = await repairmanModel.findOne({phoneNumber})   
+    const userId = findUser._id
+    const findRepairmanId = findRepairman._id
+    if (findUser) {
+      const findOtp = await otpModel.findOne({code , userId})
     
-    if (!findOtp) {
-        return res.status(400).json({message : "کد وارد شده صحیح نمیباشد"})
+      if (!findOtp) {
+          return res.status(400).json({message : "کد وارد شده صحیح نمیباشد"})
+      }
+      const accessToken = generateAccessToken(userId);
+      const updateUser = await userModel.findOneAndUpdate(
+        {
+          _id : userId
+        },
+        { accessToken },
+        {
+          projection: { accessToken: 1, _id: 0 },
+          returnDocument: "after",
+        }
+      );
+      const rmOtp = await otpModel.findOneAndDelete({code,userId})
+      return res.json({message : "کد وارد شده صحیح میباشد"})
     }
-    const rmOtp = await otpModel.findOneAndDelete({code,userId : findUser._id})
-    return res.json({message : "کد وارد شده صحیح میباشد"})
+    if (findRepairman) {
+      const findOtp = await otpModel.findOne({code ,repairmanId : findRepairmanId})
+    
+      if (!findOtp) {
+          return res.status(400).json({message : "کد وارد شده صحیح نمیباشد"})
+      }
+      const accessToken = generateAccessToken(findRepairmanId);
+      const updaterepairman = await repairmanModel.findOneAndUpdate(
+        {
+          _id : findRepairmanId
+        },
+        { accessToken },
+        {
+          projection: { accessToken: 1, _id: 0 },
+          returnDocument: "after",
+        }
+      );
+      const rmOtp = await otpModel.findOneAndDelete({code,repairmanId : findRepairmanId})
+      return res.json({message : "کد وارد شده صحیح میباشد",updaterepairman})
+    }
   } catch (error) {
     console.log(error);
   }

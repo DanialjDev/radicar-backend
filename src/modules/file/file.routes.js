@@ -1,6 +1,6 @@
 const express = require("express");
 const fileController = require("../file/file.controller");
-const { auth } = require("../../middlewares/auth");
+const { auth } = require("../../middlewares/auth.user");
 const {authPersonnel} =require("../../middlewares/auth.personnel")
 
 const { upload } = require("../../middlewares/multer");
