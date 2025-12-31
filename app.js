@@ -25,6 +25,7 @@ const settingTechnicalRoutes = require("./src/modules/settingTechnical/settingTe
 const notificationRoutes = require("./src/modules/notification/notification.routes");
 const fileRoutes = require("./src/modules/file/file.routes");
 const repairmanRoutes = require("./src/modules/repairman/repairman.routes");
+const subscriptionRoutes = require("./src/modules/subscription/subscription.routes");
 
 require("dotenv").config();
 require("./configs/db");
@@ -60,6 +61,7 @@ app.use("/settingTechnical", settingTechnicalRoutes);
 app.use("/notification", notificationRoutes);
 app.use("/file", fileRoutes);
 app.use("/repairman", repairmanRoutes);
+app.use("/subscription", subscriptionRoutes);
 
 // 404 error handler
 app.use((req, res) => {

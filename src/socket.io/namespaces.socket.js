@@ -141,7 +141,7 @@ exports.initConnectionUserInternal = (io) => {
         try {
           console.log(socket.user._id);
           
-          const webhookUrl = 'https://radicar-jlynnwpp7f.liara.run/webhook/ai-radicar';
+          const webhookUrl = 'https://radicar-ai-wdofk-gg0n.liara.run/webhook/ai-radicar';
           const payload = {
             ID: String(socket.user._id),
             chatInput: message || ''
