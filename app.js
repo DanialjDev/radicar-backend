@@ -3,6 +3,7 @@ const path = require("path");
 const cors = require("cors");
 const cron = require('node-cron');
 const { deactivateExpiredCars } = require('./src/utiles/deactivateExpiredCars/deactivateExpiredCars');
+const { increaseCarsKilometers } = require('./src/utiles/updateCarKilometers');
 const cookieParser = require("cookie-parser");
 const socketIoConnection = require("./src/utiles/socketConnection");
 const socketHandler = require("./src/socket.io/index");
@@ -69,9 +70,13 @@ app.use((req, res) => {
     return res.status(404).json({ message: "url not found" });
 });
 
-// Cron job
+// Cron jobs
 cron.schedule('* * * * *', () => {
     deactivateExpiredCars();
+});
+
+cron.schedule('* * * * *', () => {
+    increaseCarsKilometers();
 });
 
 
