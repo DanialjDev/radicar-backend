@@ -29,7 +29,7 @@ exports.createCar = async (req, res) => {
 
         let findCar = await hardwareModel.findOne({ simcard }).select("_id simcard uniqueId")
         if (!findCar) {
-            return res.status(404).json({ message: " دستگاهی با این شماره ثبت شده است" });
+            return res.status(404).json({ message: "دستگاهی با این شماره ثبت نشده است" });
         }
 
         const car = await carModel.create({ name, userId, carFactoryId, carmodelId, simcard,isActive:false})
@@ -82,7 +82,7 @@ exports.createCar = async (req, res) => {
 exports.getAllCar = async (req, res) => {
     try {
 
-        const findCar = await carModel.find({})
+        const findCar = await carModel.find({ userId: req.user._id })
             .populate({
                 path: "carFactoryId",
                 select: "_id name",
@@ -112,7 +112,7 @@ exports.getOne = async (req, res) => {
         const { id } = req.params;
 
         const findCar
-            = await carModel.findOne({ _id: id })
+            = await carModel.findOne({ _id: id, userId: req.user._id })
                 .populate({
                     path: "carFactoryId",
                     select: "_id name",
@@ -134,10 +134,15 @@ exports.getOne = async (req, res) => {
                     select: "_id name",
                 })
 
+        if (!findCar) {
+            return res.status(404).json({ message: "ماشین یافت نشد" });
+        }
+
         return res.status(200).json(findCar);
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.updateCar = async (req, res) => {
@@ -151,7 +156,7 @@ exports.updateCar = async (req, res) => {
 
 
         const isCar = await carModel.findOneAndUpdate(
-            { _id: id },
+            { _id: id, userId: req.user._id },
             updateData,
             { new: true }
         );
@@ -168,13 +173,14 @@ exports.updateCar = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.removeCar = async (req, res) => {
     try {
         const { id } = req.params
 
-        const isCar = await carModel.findOneAndDelete({ _id: id });
+        const isCar = await carModel.findOneAndDelete({ _id: id, userId: req.user._id });
 
         if (!isCar) {
             return res.status(404).json({ message: "ماشین یافت نشد" });
@@ -186,5 +192,6 @@ exports.removeCar = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };

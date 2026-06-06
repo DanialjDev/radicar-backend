@@ -41,7 +41,7 @@ exports.getAll = async (req, res) => {
     // res.json([...grouped.values()]);
 
     const result = await Notification.aggregate([
-      { $match: { isActive: true } },
+      { $match: { isActive: true, userId: new mongoose.Types.ObjectId(req.user._id) } },
 
       {
         $lookup: {
@@ -107,7 +107,10 @@ exports.update = async (req, res) => {
   try {
     const { id } = req.params
 
-    const findNotification = await Notification.findOneAndUpdate({ _id: id }, { isActive: false })
+    const findNotification = await Notification.findOneAndUpdate(
+      { _id: id, userId: req.user._id },
+      { isActive: false }
+    )
 
     if (!findNotification) {
       return res.status(404).json({ message: "اعلان یافت نشد" })
@@ -141,5 +144,6 @@ exports.update = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };

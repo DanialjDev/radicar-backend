@@ -6,7 +6,10 @@ exports.createMessageUser = async (req, res) => {
   try {
     const { ticketId,message,file } = req.body;
 
-    const findTicket = await ticketModel.findOneAndUpdate({ _id : ticketId },{ supportStatus : "pending" , userStatus : "answered"})
+    const findTicket = await ticketModel.findOneAndUpdate(
+      { _id: ticketId, userId: req.user._id },
+      { supportStatus: "pending", userStatus: "answered" }
+    );
     if (!findTicket) {
       return res.status(404).json({message : "تیکت یافت نشد"})
     }
@@ -66,6 +69,16 @@ exports.getOne = async (req, res) => {
   try {
 
     const {id} = req.params
+    const findTicket = await ticketModel.findOne({ _id: id });
+
+    if (!findTicket) {
+      return res.status(404).json({ message: "تیکت یافت نشد" });
+    }
+
+    if (req.user && findTicket.userId.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: "دسترسی غیرمجاز" });
+    }
+
     const findMessage = await messageModel.find({ ticketId : id })
 
     return res.status(200).json(findMessage);

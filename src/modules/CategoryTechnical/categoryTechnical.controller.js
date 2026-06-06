@@ -48,6 +48,7 @@ exports.getOne = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.updateCategoryTechnical = async (req, res) => {
@@ -75,6 +76,7 @@ exports.updateCategoryTechnical = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.removeCategoryTechnical = async (req, res) => {
@@ -91,5 +93,6 @@ exports.removeCategoryTechnical = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };

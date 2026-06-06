@@ -72,6 +72,7 @@ exports.getOne = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.updateCarmodel = async (req, res) => {
@@ -104,6 +105,7 @@ exports.updateCarmodel = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.removeCarmodel = async (req, res) => {
@@ -120,5 +122,6 @@ exports.removeCarmodel = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };

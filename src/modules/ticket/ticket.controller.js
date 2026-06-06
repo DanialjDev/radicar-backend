@@ -49,6 +49,11 @@ exports.getOneUser = async (req, res) => {
     const { id } = req.params
 
     let findTicket = await ticketModel.findOne({ _id: id, userId: req.user._id }).select('title status priority');
+
+    if (!findTicket) {
+      return res.status(404).json({ message: "تیکت یافت نشد" });
+    }
+
     const findMessage = await messageModel.find({ ticketId: findTicket._id })
 
     return res.status(200).json({ ticket: findTicket, message: findMessage });
@@ -77,6 +82,11 @@ exports.getOnePersonnel = async (req, res) => {
         path: "userId",
         select: "_id name",
       }).select('title status priority userId');
+
+    if (!findTicket) {
+      return res.status(404).json({ message: "تیکت یافت نشد" });
+    }
+
     const findMessage = await messageModel.find({ ticketId: findTicket._id })
 
 
@@ -153,5 +163,6 @@ exports.updateTicket = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };

@@ -188,6 +188,7 @@ exports.updateSettingTechnicalIncrement = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.updateSettingTechnicalCurrent = async (req, res) => {
@@ -214,6 +215,7 @@ exports.updateSettingTechnicalCurrent = async (req, res) => {
         res.json({ message: 'همه آیتم‌ها با موفقیت بروزرسانی شدند' });
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 

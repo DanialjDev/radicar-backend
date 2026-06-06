@@ -21,7 +21,7 @@ const authRepairman = async (req, res, next) => {
     if (repairman == null) {
       return res.status(401).json({ message: 'token not correct' });
     }
-    // Reflect.deleteProperty(repairman, "password");
+    Reflect.deleteProperty(repairman, "password");
 
     req.repairman = repairman;
 

@@ -14,6 +14,7 @@ exports.getOne = async (req, res) => {
         return res.status(200).json(findRepairShop);
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.updateCarAddress = async (req, res) => {
@@ -46,16 +47,17 @@ exports.updateCarAddress = async (req, res) => {
         updateData.location = location
         updateData.isActive = isActive
 
-        const RepairShop = await repairmanModel.findOne({ _id: repairmanId })
-
-            if (isActive === true) {
-            if (RepairShop.approvalStatus !== "confirmed") {
-                return res.status(400).json({ message: "امکان فعالسازی تعمیرگاه فقط در صورت تایید نهایی وجود دارد." });
-            }
-        }
         const findRepairman = await repairmanModel.findOne({ _id: repairmanId })
         if (!findRepairman) {
             return res.status(404).json({ message: "تعمیرکار پید نشد" });
+        }
+
+        const existingRepairShop = await repairShopModel.findOne({ repairmanId });
+
+        if (isActive === true) {
+            if (!existingRepairShop || existingRepairShop.approvalStatus !== "confirmed") {
+                return res.status(400).json({ message: "امکان فعالسازی تعمیرگاه فقط در صورت تایید نهایی وجود دارد." });
+            }
         }
 
         const findRepairShop = await repairShopModel.findOneAndUpdate(
@@ -86,6 +88,7 @@ exports.updateCarAddress = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 

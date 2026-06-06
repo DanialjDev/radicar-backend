@@ -21,7 +21,7 @@ const authPersonnel = async (req, res, next) => {
     if (personnel == null) {
       return res.status(401).json({ message: 'token not correct' });
     }
-    // Reflect.deleteProperty(personnel, "password");
+    Reflect.deleteProperty(personnel, "password");
 
     req.personnel = personnel;
 

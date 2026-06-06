@@ -6,6 +6,24 @@
 		"_exporter_id": "30950862",
 		"_collection_link": "https://supportchat.postman.co/workspace/My-Workspace~7bfe59cd-a242-4787-829c-0008acab9ac3/collection/30950862-faeb0bf0-3724-4684-9be9-e2dfd62146db?action=share&source=collection_link&creator=30950862"
 	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "userToken",
+			"value": ""
+		},
+		{
+			"key": "personnelToken",
+			"value": ""
+		},
+		{
+			"key": "repairmanToken",
+			"value": ""
+		}
+	],
 	"item": [
 		{
 			"name": "user",
@@ -83,12 +101,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/reset",
+							"raw": "http://localhost:3000/user/reset",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"user",
 								"reset"
@@ -122,12 +140,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/67f51f41a5288aaa2c7d7c1e/update",
+							"raw": "http://localhost:3000/user/67f51f41a5288aaa2c7d7c1e/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"user",
 								"67f51f41a5288aaa2c7d7c1e",
@@ -217,12 +235,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/otp/create",
+							"raw": "http://localhost:3000/otp/create",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"otp",
 								"create"
@@ -246,12 +264,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/otp/check",
+							"raw": "http://localhost:3000/otp/check",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"otp",
 								"check"
@@ -264,7 +282,67 @@
 		},
 		{
 			"name": "settingUser",
-			"item": []
+			"item": [
+				{
+					"name": "getOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usersetting/",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["usersetting", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"settingNotification\": {\r\n        \"status\": \"Active\",\r\n        \"importance\": \"High\",\r\n        \"repeat\": \"Every week\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usersetting/update",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["usersetting", "update"]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "personnel",
@@ -284,12 +362,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/personnel/register",
+							"raw": "http://localhost:3000/personnel/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"personnel",
 								"register"
@@ -343,12 +421,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/personnel",
+							"raw": "http://localhost:3000/personnel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"personnel"
 							]
@@ -381,12 +459,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/personnel/67fa2d7d4426839745029d78/update",
+							"raw": "http://localhost:3000/personnel/67fa2d7d4426839745029d78/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"personnel",
 								"67fa2d7d4426839745029d78",
@@ -412,12 +490,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/personnel/67fa2d7d4426839745029d78/remove",
+							"raw": "http://localhost:3000/personnel/67fa2d7d4426839745029d78/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"personnel",
 								"67fa2d7d4426839745029d78",
@@ -443,12 +521,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/personnel/67fa34c833f5225c9c46f784",
+							"raw": "http://localhost:3000/personnel/67fa34c833f5225c9c46f784",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"personnel",
 								"67fa34c833f5225c9c46f784"
@@ -487,12 +565,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/ticket",
+							"raw": "http://localhost:3000/ticket",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"ticket"
 							]
@@ -516,12 +594,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/ticket/user",
+							"raw": "http://localhost:3000/ticket/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"ticket",
 								"user"
@@ -546,12 +624,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/ticket/personnel",
+							"raw": "http://localhost:3000/ticket/personnel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"ticket",
 								"personnel"
@@ -607,12 +685,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/ticket/6827491499e7e5d31d974e3f/personnel",
+							"raw": "http://localhost:3000/ticket/6827491499e7e5d31d974e3f/personnel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"ticket",
 								"6827491499e7e5d31d974e3f",
@@ -647,12 +725,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/ticket/67fb7330e790e96775a09bca/update",
+							"raw": "http://localhost:3000/ticket/67fb7330e790e96775a09bca/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"ticket",
 								"67fb7330e790e96775a09bca",
@@ -692,12 +770,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/message/personnel",
+							"raw": "http://localhost:3000/message/personnel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"message",
 								"personnel"
@@ -806,12 +884,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carFactory/add",
+							"raw": "http://localhost:3000/carFactory/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"add"
@@ -836,12 +914,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carFactory/personnel",
+							"raw": "http://localhost:3000/carFactory/personnel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"personnel"
@@ -866,12 +944,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carFactory/user",
+							"raw": "http://localhost:3000/carFactory/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"user"
@@ -896,12 +974,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carFactory/6809fd7f9f1a4127a4f03f10",
+							"raw": "http://localhost:3000/carFactory/6809fd7f9f1a4127a4f03f10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"6809fd7f9f1a4127a4f03f10"
@@ -935,12 +1013,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carFactory/6809fd7f9f1a4127a4f03f10/update",
+							"raw": "http://localhost:3000/carFactory/6809fd7f9f1a4127a4f03f10/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"6809fd7f9f1a4127a4f03f10",
@@ -966,12 +1044,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carFactory/6809fd7f9f1a4127a4f03f10/remove",
+							"raw": "http://localhost:3000/carFactory/6809fd7f9f1a4127a4f03f10/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"6809fd7f9f1a4127a4f03f10",
@@ -1011,12 +1089,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carAddress/add",
+							"raw": "http://localhost:3000/carAddress/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carAddress",
 								"add"
@@ -1041,12 +1119,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carAddress/",
+							"raw": "http://localhost:3000/carAddress/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carAddress",
 								""
@@ -1071,12 +1149,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carAddress/680b4fcf96b32e96ce2efaaa",
+							"raw": "http://localhost:3000/carAddress/680b4fcf96b32e96ce2efaaa",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carAddress",
 								"680b4fcf96b32e96ce2efaaa"
@@ -1110,12 +1188,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carAddress/680b4fcf96b32e96ce2efaaa/update",
+							"raw": "http://localhost:3000/carAddress/680b4fcf96b32e96ce2efaaa/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carAddress",
 								"680b4fcf96b32e96ce2efaaa",
@@ -1141,12 +1219,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carAddress/680a10f7df044236a37fd884/remove",
+							"raw": "http://localhost:3000/carAddress/680a10f7df044236a37fd884/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carAddress",
 								"680a10f7df044236a37fd884",
@@ -1186,12 +1264,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carTechniacal/add",
+							"raw": "http://localhost:3000/carTechniacal/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carTechniacal",
 								"add"
@@ -1216,12 +1294,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carTechniacal/",
+							"raw": "http://localhost:3000/carTechniacal/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carTechniacal",
 								""
@@ -1246,12 +1324,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carTechniacal/6819bc92a302ab0eb98b36d7",
+							"raw": "http://localhost:3000/carTechniacal/6819bc92a302ab0eb98b36d7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carTechniacal",
 								"6819bc92a302ab0eb98b36d7"
@@ -1285,12 +1363,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carTechniacal/680b416e1d4a380c07573982/update",
+							"raw": "http://localhost:3000/carTechniacal/680b416e1d4a380c07573982/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carTechniacal",
 								"680b416e1d4a380c07573982",
@@ -1316,12 +1394,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carTechniacal/680a1531324fc39cb0a23d31/remove",
+							"raw": "http://localhost:3000/carTechniacal/680a1531324fc39cb0a23d31/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carTechniacal",
 								"680a1531324fc39cb0a23d31",
@@ -1391,12 +1469,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carModel",
+							"raw": "http://localhost:3000/carModel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carModel"
 							]
@@ -1420,12 +1498,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carModel/680b4442a3fa8b35234b3c63",
+							"raw": "http://localhost:3000/carModel/680b4442a3fa8b35234b3c63",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carModel",
 								"680b4442a3fa8b35234b3c63"
@@ -1450,12 +1528,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carFactory/68132a35132203eab2619f44/carModel",
+							"raw": "http://localhost:3000/carFactory/68132a35132203eab2619f44/carModel",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carFactory",
 								"68132a35132203eab2619f44",
@@ -1490,12 +1568,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carModel/680b4442a3fa8b35234b3c63/update",
+							"raw": "http://localhost:3000/carModel/680b4442a3fa8b35234b3c63/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carModel",
 								"680b4442a3fa8b35234b3c63",
@@ -1521,12 +1599,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carModel/681a5036cda2fb02ba1f25a2/remove",
+							"raw": "http://localhost:3000/carModel/681a5036cda2fb02ba1f25a2/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"carModel",
 								"681a5036cda2fb02ba1f25a2",
@@ -1586,12 +1664,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/hardware",
+							"raw": "http://localhost:3000/hardware",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"hardware"
 							]
@@ -1668,12 +1746,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/categoryTechnical/add",
+							"raw": "http://localhost:3000/categoryTechnical/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"categoryTechnical",
 								"add"
@@ -1698,12 +1776,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/categoryTechnical",
+							"raw": "http://localhost:3000/categoryTechnical",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"categoryTechnical"
 							]
@@ -1727,12 +1805,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/categoryTechnical/6819bb79a302ab0eb98b36c7",
+							"raw": "http://localhost:3000/categoryTechnical/6819bb79a302ab0eb98b36c7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"categoryTechnical",
 								"6819bb79a302ab0eb98b36c7"
@@ -1766,12 +1844,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/categoryTechnical/6819bb79a302ab0eb98b36c7/update",
+							"raw": "http://localhost:3000/categoryTechnical/6819bb79a302ab0eb98b36c7/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"categoryTechnical",
 								"6819bb79a302ab0eb98b36c7",
@@ -1797,12 +1875,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/categoryTechnical/6819bb79a302ab0eb98b36c7/remove",
+							"raw": "http://localhost:3000/categoryTechnical/6819bb79a302ab0eb98b36c7/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"categoryTechnical",
 								"6819bb79a302ab0eb98b36c7",
@@ -1842,12 +1920,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/car/check",
+							"raw": "http://localhost:3000/car/check",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"car",
 								"check"
@@ -1881,12 +1959,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/car/add",
+							"raw": "http://localhost:3000/car/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"car",
 								"add"
@@ -1920,12 +1998,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/car/681a24a00f8a813406c2900e/update",
+							"raw": "http://localhost:3000/car/681a24a00f8a813406c2900e/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"car",
 								"681a24a00f8a813406c2900e",
@@ -1951,12 +2029,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/car/6821b4737bac63cffd2bda38/remove",
+							"raw": "http://localhost:3000/car/6821b4737bac63cffd2bda38/remove",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"car",
 								"6821b4737bac63cffd2bda38",
@@ -1982,12 +2060,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/car",
+							"raw": "http://localhost:3000/car",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"car"
 							]
@@ -2011,12 +2089,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/car/681a3405153dd39a804d7217",
+							"raw": "http://localhost:3000/car/681a3405153dd39a804d7217",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"car",
 								"681a3405153dd39a804d7217"
@@ -2082,12 +2160,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/settingTechnical/current?carId=6821b9180a80e3cfff7a15fc",
+							"raw": "http://localhost:3000/settingTechnical/current?carId=6821b9180a80e3cfff7a15fc",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"settingTechnical",
 								"current"
@@ -2127,12 +2205,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/settingTechnical/update-increment",
+							"raw": "http://localhost:3000/settingTechnical/update-increment",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"settingTechnical",
 								"update-increment"
@@ -2166,12 +2244,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/settingTechnical/update-current",
+							"raw": "http://localhost:3000/settingTechnical/update-current",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "3000",
 							"path": [
 								"settingTechnical",
 								"update-current"
@@ -2242,6 +2320,120 @@
 								"6835b966d4a4f1bf59e99976",
 								"update"
 							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subscription",
+			"item": [
+				{
+					"name": "getAll (personnel)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{personnelToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscription/",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["subscription", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add (personnel)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{personnelToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"پلن ماهانه\",\r\n    \"description\": \"اشتراک یک ماهه\",\r\n    \"Category\": [\"سرویس\"],\r\n    \"price\": 100000,\r\n    \"Duration\": 30,\r\n    \"status\": true,\r\n    \"discount\": 0,\r\n    \"forPerson\": \"User\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscription/add",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["subscription", "add"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll (user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscription/user",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["subscription", "user"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll (repairman)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{repairmanToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscription/repairman",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["subscription", "repairman"]
 						}
 					},
 					"response": []

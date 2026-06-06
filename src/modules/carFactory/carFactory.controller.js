@@ -48,6 +48,7 @@ exports.getOne = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.getOneWithUser = async (req, res) => {
@@ -61,6 +62,7 @@ exports.getOneWithUser = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.updateCarFactory = async (req, res) => {
@@ -87,6 +89,7 @@ exports.updateCarFactory = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 exports.removeCarFactory = async (req, res) => {
@@ -103,5 +106,6 @@ exports.removeCarFactory = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };

@@ -6,9 +6,9 @@ const {authRepairman} =require("../../middlewares/auth.repairman")
 const router = express.Router();
 
 
+router.route("/login").post(repairmanController.login)
 router.route("/").get(authPersonnel,repairmanController.getAll)
 router.route("/:id").get(authRepairman,repairmanController.getOne)
-router.route("/login").post(repairmanController.login)
 router.route("/:id/update").put(authRepairman,repairmanController.updateRepairman)
 router.route("/:id/remove").delete(authPersonnel,repairmanController.removeRepairman)
 

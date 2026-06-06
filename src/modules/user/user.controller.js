@@ -69,7 +69,6 @@ exports.login = async (req, res) => {
   try {
     const { phoneNumber, password } = req.body;
     const user = await userModel.findOne({ phoneNumber });
-    console.log(phoneNumber, password);
     
     if (user) {
       const isValidPassword = bcrypt.compareSync(password, user.password);
@@ -94,7 +93,7 @@ exports.login = async (req, res) => {
     return res.status(404).json({ message: "user not found" });
   } catch (error) {
     console.log(error);
-    return res.json({ error: error });
+    return res.status(500).json({ message: "خطای سرور" });
   }
 };
 
@@ -124,12 +123,17 @@ exports.resetPassword = async (req, res) => {
     
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: "خطای سرور" });
   }
 };
 exports.updateUser = async (req, res) => {
   try {
     const { name,phoneNumber, password,isAcceptNotification } = req.body;
     const {id} = req.params
+
+    if (req.user._id.toString() !== id) {
+      return res.status(403).json({ message: "دسترسی غیرمجاز" });
+    }
     
       const updateData = {};
       updateData.name = name
@@ -155,5 +159,6 @@ exports.updateUser = async (req, res) => {
     
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: "خطای سرور" });
   }
 };

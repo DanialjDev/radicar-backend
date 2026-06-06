@@ -71,7 +71,7 @@ exports.removeSubscription = async (req, res) => {
     const { id } = req.params;
     if (mongoose.Types.ObjectId.isValid(id)) {
       const removeSubscription = await subscriptionModel
-        .findOneAndUpdate({ _id: id },{isDelete : false})
+        .findOneAndUpdate({ _id: id }, { isDelete: true })
         .lean();
       if (!removeSubscription) {
         return res.status(404).json({ message: "Subscription not found" });
@@ -96,19 +96,20 @@ exports.updateSubscription = async (req, res) => {
       Duration,
       status,
       Category,
-      discount
+      discount,
+      forPerson
     } = req.body;
 
     if (mongoose.Types.ObjectId.isValid(id)) {
       const updateData = {
         name,
-      description,
-      price,
-      Duration,
-      status,
-      Category,
-      discount,
-      forPerson
+        description,
+        price,
+        Duration,
+        status,
+        Category,
+        discount,
+        forPerson
       };
 
       const isSubscription = await subscriptionModel.findOneAndUpdate(
@@ -147,7 +148,7 @@ exports.updateSubscription = async (req, res) => {
 exports.getSubscriptionUser = async (req, res) => {
   try {
     const allSubscription = await subscriptionModel
-      .find({isDelete : false,status:true,forPerson : "user"})
+      .find({ isDelete: false, status: true, forPerson: "User" })
       .sort({ _id: -1 })
       .lean();
 
@@ -164,7 +165,7 @@ exports.getSubscriptionByIdUser = async (req, res) => {
     const { id } = req.params;
     if (mongoose.Types.ObjectId.isValid(id)) {
       const Subscription = await subscriptionModel
-        .findOne({ _id: id , forPerson:"user"})
+        .findOne({ _id: id, forPerson: "User" })
         .lean();
       if (!Subscription) {
         return res.status(404).json({ message: "subscription not found" });

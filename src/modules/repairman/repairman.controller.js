@@ -9,7 +9,7 @@ const { default: mongoose } = require("mongoose");
 exports.getAll = async (req, res) => {
   try {
 
-    const findrepairman = await repairmanModel.find({}).select('-accessToken -passwprd');
+    const findrepairman = await repairmanModel.find({}).select('-accessToken -password');
 
     return res.status(200).json(findrepairman);
   } catch (error) {
@@ -32,7 +32,11 @@ exports.getOne = async (req, res) => {
   try {
     const { id } = req.params
 
-    const findrepairman = await repairmanModel.findOne({ _id: id }).select('-accessToken -passwprd');
+    if (req.repairman._id.toString() !== id) {
+      return res.status(403).json({ message: "دسترسی غیرمجاز" });
+    }
+
+    const findrepairman = await repairmanModel.findOne({ _id: id }).select('-accessToken -password');
 
 
     return res.status(200).json(findrepairman);
@@ -98,7 +102,7 @@ exports.login = async (req, res) => {
     return res.status(201).json({message : "تعمیرکار با موفقیت ثبت نام شد",newRepairman})
   } catch (error) {
     console.log(error);
-    return res.json({ error: error });
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
 
@@ -128,10 +132,17 @@ exports.resetPassword = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
 exports.updateRepairman = async (req, res) => {
   try {
+    const { id } = req.params;
+
+    if (req.repairman._id.toString() !== id) {
+      return res.status(403).json({ message: "دسترسی غیرمجاز" });
+    }
+
     const { name,
       username,
       phoneNumber,
@@ -142,7 +153,6 @@ exports.updateRepairman = async (req, res) => {
       description,
       password,
       birthday} = req.body;
-    const { id } = req.params
 
     const updateData = {};
     updateData.name = name
@@ -175,6 +185,7 @@ exports.updateRepairman = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
 exports.removeRepairman = async (req, res) => {
@@ -191,5 +202,6 @@ exports.removeRepairman = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };

@@ -48,7 +48,7 @@ exports.createHardware = async (req, res) => {
 exports.getOne = async (req, res) => {
     try {
         const hardwareId = req.hardware._id
-        const findHardware = await hardwareModel.findOne({ _id: hardwareId._id })
+        const findHardware = await hardwareModel.findOne({ _id: hardwareId })
         if (!findHardware) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
         }
@@ -79,7 +79,7 @@ exports.updateHardware = async (req, res) => {
         const { currentKilometer } = req.body;
 
         const hardwareId = req.hardware._id
-        const findHardware = await hardwareModel.findOne({ _id: hardwareId._id })
+        const findHardware = await hardwareModel.findOne({ _id: hardwareId })
         if (!findHardware) {
             return res.status(404).json({ message: "دستگاه یافت نشد" });
         }
@@ -110,6 +110,7 @@ exports.updateHardware = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: 'خطای داخلی سرور' });
     }
 };
 

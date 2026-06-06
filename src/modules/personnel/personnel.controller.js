@@ -114,7 +114,7 @@ exports.login = async (req, res) => {
     return res.status(404).json({ message: "کاربر یافت نشد" });
   } catch (error) {
     console.log(error);
-    return res.json({ error: error });
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
 
@@ -144,6 +144,7 @@ exports.resetPassword = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
 exports.updatepersonnel = async (req, res) => {
@@ -178,6 +179,7 @@ exports.updatepersonnel = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
 exports.removepersonnel = async (req, res) => {
@@ -194,5 +196,6 @@ exports.removepersonnel = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'خطای داخلی سرور' });
   }
 };
